@@ -1,0 +1,15 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-A3_24554141.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\Desktop\Uni\Advanced Game Dev\Assignment 3 Repo\A3-Artificial-Intelligence\A3_24554141\Intermediate\Build\Win64\x64\A3_24554141Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.InclOrderUnreal5_1.h.obj"
+"D:\Desktop\Uni\Advanced Game Dev\Assignment 3 Repo\A3-Artificial-Intelligence\A3_24554141\Intermediate\Build\Win64\x64\UnrealEditor\Development\A3_24554141\A3_24554141.init.gen.cpp.obj"
+"D:\Desktop\Uni\Advanced Game Dev\Assignment 3 Repo\A3-Artificial-Intelligence\A3_24554141\Intermediate\Build\Win64\x64\UnrealEditor\Development\A3_24554141\A3_24554141GameModeBase.gen.cpp.obj"
+"D:\Desktop\Uni\Advanced Game Dev\Assignment 3 Repo\A3-Artificial-Intelligence\A3_24554141\Intermediate\Build\Win64\x64\UnrealEditor\Development\A3_24554141\A3_24554141.cpp.obj"
+"D:\Desktop\Uni\Advanced Game Dev\Assignment 3 Repo\A3-Artificial-Intelligence\A3_24554141\Intermediate\Build\Win64\x64\UnrealEditor\Development\A3_24554141\A3_24554141GameModeBase.cpp.obj"
+"D:\Desktop\Uni\Advanced Game Dev\Assignment 3 Repo\A3-Artificial-Intelligence\A3_24554141\Intermediate\Build\Win64\x64\UnrealEditor\Development\A3_24554141\Default.rc2.res"
+/OUT:"D:\Desktop\Uni\Advanced Game Dev\Assignment 3 Repo\A3-Artificial-Intelligence\A3_24554141\Intermediate\Build\Win64\x64\UnrealEditor\Development\A3_24554141\UnrealEditor-A3_24554141.lib"

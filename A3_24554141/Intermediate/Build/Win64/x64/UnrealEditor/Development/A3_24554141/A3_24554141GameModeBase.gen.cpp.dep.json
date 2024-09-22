@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\desktop\\uni\\advanced game dev\\assignment 3 repo\\a3-artificial-intelligence\\a3_24554141\\intermediate\\build\\win64\\unrealeditor\\inc\\a3_24554141\\uht\\a3_24554141gamemodebase.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\desktop\\uni\\advanced game dev\\assignment 3 repo\\a3-artificial-intelligence\\a3_24554141\\intermediate\\build\\win64\\x64\\a3_24554141editor\\development\\engine\\sharedpch.engine.shadowerrors.inclorderunreal5_1.h.pch",
+        "Includes": [
+            "d:\\desktop\\uni\\advanced game dev\\assignment 3 repo\\a3-artificial-intelligence\\a3_24554141\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\a3_24554141\\definitions.a3_24554141.h",
+            "d:\\desktop\\uni\\advanced game dev\\assignment 3 repo\\a3-artificial-intelligence\\a3_24554141\\source\\a3_24554141\\a3_24554141gamemodebase.h",
+            "c:\\epic games\\ue_5.2\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\epic games\\ue_5.2\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\epic games\\ue_5.2\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "c:\\epic games\\ue_5.2\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "d:\\desktop\\uni\\advanced game dev\\assignment 3 repo\\a3-artificial-intelligence\\a3_24554141\\intermediate\\build\\win64\\unrealeditor\\inc\\a3_24554141\\uht\\a3_24554141gamemodebase.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
