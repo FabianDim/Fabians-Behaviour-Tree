@@ -1336,3 +1336,77 @@ LogConfig: Set CVar [[r.Shadow.DetectVertexShaderLayerAtRuntime:1]]
 [2024.09.25-12.37.10:378][701]LogD3D12RHI: OnlineHeap RollOver Detected. Increase the heap size to prevent creation of additional heaps
 [2024.09.25-12.42.40:264][690]LogAudioMixer: Display: Audio Buffer Underrun (starvation) detected. InstanceID=1
 [2024.09.25-12.45.45:718][246]LogAudioMixer: Display: Audio Buffer Underrun (starvation) detected. InstanceID=1
+[2024.09.25-12.55.59:169][454]LogUObjectHash: Compacting FUObjectHashTables data took   3.78ms
+[2024.09.25-12.55.59:240][454]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2024.09.25-12.55.59:252][454]LogAssetEditorSubsystem: Opening Asset editor for World /Game/Levels/ShooterMap.ShooterMap
+[2024.09.25-12.55.59:253][454]Cmd: MAP LOAD FILE="D:/Desktop/Uni/Advanced Game Dev/Assignment 3 Repo/A3-Artificial-Intelligence/Lab8StartingPoint/AGP/Content/Levels/ShooterMap.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=4
+[2024.09.25-12.55.59:254][454]LightingResults: New page: Lighting Build
+[2024.09.25-12.55.59:254][454]LoadErrors: New page: Loading map: ShooterMap.umap
+[2024.09.25-12.55.59:394][454]LogWorld: UWorld::CleanupWorld for TestingMap, bSessionEnded=true, bCleanupResources=true
+[2024.09.25-12.55.59:394][454]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2024.09.25-12.55.59:401][454]LogContentBundle: [TestingMap(Standalone)] Deleting container.
+[2024.09.25-12.55.59:402][454]MapCheck: New page: Map Check
+[2024.09.25-12.55.59:402][454]LightingResults: New page: Lighting Build
+[2024.09.25-12.55.59:410][454]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2024.09.25-12.55.59:479][454]LogUObjectHash: Compacting FUObjectHashTables data took   0.83ms
+[2024.09.25-12.55.59:491][454]LogWorld: UWorld::CleanupWorld for ShooterMap, bSessionEnded=true, bCleanupResources=true
+[2024.09.25-12.55.59:492][454]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2024.09.25-12.55.59:502][454]LogUObjectHash: Compacting FUObjectHashTables data took   0.54ms
+[2024.09.25-12.55.59:510][454]LogUObjectHash: Compacting FUObjectHashTables data took   0.65ms
+[2024.09.25-12.55.59:528][454]LogAudio: Display: Audio Device (ID: 1) registered with world 'ShooterMap'.
+[2024.09.25-12.55.59:528][454]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2024.09.25-12.55.59:528][454]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2024.09.25-12.55.59:529][454]LogAIModule: Creating AISystem for world ShooterMap
+[2024.09.25-12.55.59:556][454]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2024.09.25-12.55.59:566][454]LogUObjectHash: Compacting FUObjectHashTables data took   0.46ms
+[2024.09.25-12.55.59:569][454]Cmd: MAP CHECKDEP NOCLEARLOG
+[2024.09.25-12.55.59:569][454]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0.099ms to complete.
+[2024.09.25-12.55.59:570][454]LogFileHelpers: Loading map 'ShooterMap' took 0.317
+[2024.09.25-12.55.59:601][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:604][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:604][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:605][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:606][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:607][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:607][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:608][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:608][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:609][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:609][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:610][454]LogPackageName: Warning: DoesPackageExist called on PackageName that will always return false. Reason: Input '' was empty.
+[2024.09.25-12.55.59:682][456]LogShaderCompilers: Display: ================================================
+[2024.09.25-12.55.59:682][456]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2024.09.25-12.55.59:682][456]LogShaderCompilers: Display: Total job queries 17, among them cache hits 0 (0.00%)
+[2024.09.25-12.55.59:682][456]LogShaderCompilers: Display: Tracking 17 distinct input hashes that result in 11 distinct outputs (64.71%)
+[2024.09.25-12.55.59:682][456]LogShaderCompilers: Display: RAM used: 385.70 KiB of 1.60 GiB budget. Usage: 0.02%
+[2024.09.25-12.55.59:683][456]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2024.09.25-12.55.59:683][456]LogShaderCompilers: Display: Shaders Compiled: 0
+[2024.09.25-12.55.59:683][456]LogShaderCompilers: Display: Jobs assigned 0, completed 0 (0.00%)
+[2024.09.25-12.55.59:683][456]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 0.00 s
+[2024.09.25-12.55.59:683][456]LogShaderCompilers: Display: ================================================
+[2024.09.25-12.56.11:959][779]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2024.09.25-12.56.18:187][370]LogSlate: Took 0.000163 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2024.09.25-12.56.21:555][661]LogSlate: Window 'Project Settings' being destroyed
+[2024.09.25-12.56.21:561][661]LogSlate: Window 'Project Settings' being destroyed
+[2024.09.25-12.56.22:686][789]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2024.09.25-12.56.22:728][789]LogUObjectHash: Compacting FUObjectHashTables data took   0.65ms
+[2024.09.25-12.56.22:739][789]LogPackageLocalizationCache: Processed 44 localized package path(s) for 1 prioritized culture(s) in 0.010181 seconds
+[2024.09.25-12.56.22:746][789]LogSerialization: UsePackageTrailer: 'true'
+[2024.09.25-12.56.22:763][789]LogSavePackage: Moving output files for package: /Game/Levels/ShooterMap
+[2024.09.25-12.56.22:764][789]LogSavePackage: Moving 'D:/Desktop/Uni/Advanced Game Dev/Assignment 3 Repo/A3-Artificial-Intelligence/Lab8StartingPoint/AGP/Saved/ShooterMap691E828147F19F16E41D9DAC30E5A283.tmp' to 'D:/Desktop/Uni/Advanced Game Dev/Assignment 3 Repo/A3-Artificial-Intelligence/Lab8StartingPoint/AGP/Content/Levels/ShooterMap.umap'
+[2024.09.25-12.56.22:770][789]LogFileHelpers: Saving map 'ShooterMap' took 0.052
+[2024.09.25-12.56.22:780][789]LogFileHelpers: InternalPromptForCheckoutAndSave took 94 ms
+[2024.09.25-12.56.22:784][789]AssetCheck: New page: Asset Save: ShooterMap
+[2024.09.25-12.56.22:784][789]LogContentValidation: Display: Validating /Script/Engine.World /Game/Levels/ShooterMap.ShooterMap
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: invalid HTTP response code received. URL: https://datarouter.ol.epicgames.com/datarouter/api/v1/public/data?SessionID=%7BCD48290E-4AED-27DA-4C2F-36BD9AE6314E%7D&AppID=UEEditor.Rocket.Release&AppVersion=5.2.1-26001984%2B%2B%2BUE5%2BRelease-5.2&UserID=6df7e2044c5140ee636314b0958ba573%7C034f30c2b4c649d79eceeace0442c33c%7C1edf7ab5-ae88-4688-9cca-9304fb5ed148&AppEnvironment=datacollector-binary&UploadType=eteventstream, HTTP code: 0, content length: 0, actual payload size: 0
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: request failed, libcurl error: 65 (Send failed since rewinding of the data stream failed)
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: libcurl info message cache 0 (Found bundle for host: 0x5c966160120 [serially])
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: libcurl info message cache 1 (Re-using existing connection #1 with host datarouter.ol.epicgames.com)
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: libcurl info message cache 2 (Connected to datarouter.ol.epicgames.com (54.83.21.32) port 443 (#1))
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: libcurl info message cache 3 (We are completely uploaded and fine)
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: libcurl info message cache 4 (TLSv1.3 (IN), TLS alert, close notify (256):)
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: libcurl info message cache 5 (Connection died, retrying a fresh connect (retry count: 1))
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: libcurl info message cache 6 (necessary data rewind wasn't possible)
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: libcurl info message cache 7 (Closing connection 1)
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: 000005C9B07DDC00: libcurl info message cache 8 (TLSv1.3 (OUT), TLS alert, close notify (256):)
+[2024.09.25-12.56.42:305][ 19]LogHttp: Warning: Retry exhausted on https://datarouter.ol.epicgames.com/datarouter/api/v1/public/data?SessionID=%7BCD48290E-4AED-27DA-4C2F-36BD9AE6314E%7D&AppID=UEEditor.Rocket.Release&AppVersion=5.2.1-26001984%2B%2B%2BUE5%2BRelease-5.2&UserID=6df7e2044c5140ee636314b0958ba573%7C034f30c2b4c649d79eceeace0442c33c%7C1edf7ab5-ae88-4688-9cca-9304fb5ed148&AppEnvironment=datacollector-binary&UploadType=eteventstream
