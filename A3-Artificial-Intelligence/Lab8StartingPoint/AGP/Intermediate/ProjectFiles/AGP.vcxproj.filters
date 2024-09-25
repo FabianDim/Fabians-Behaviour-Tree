@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\AGP.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\AGP.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\AGPEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Platforms">
+      <UniqueIdentifier>{ED49A36C-4FD5-37E5-A2AC-E11BEF4F21CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platforms\HoloLens">
+      <UniqueIdentifier>{28125F47-4973-377C-9D77-EBC3C72EC856}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platforms\HoloLens\Config">
+      <UniqueIdentifier>{D3BF39CB-FA64-39E2-A327-B5021BA69773}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Platforms\HoloLens\Config\HoloLensEngine.ini">
+      <Filter>Platforms\HoloLens\Config</Filter>
+    </None>
+    <Filter Include="Source\AGP">
+      <UniqueIdentifier>{61798D58-C268-3DD4-9BD2-A85EE2B6F825}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\AGP\AGP.Build.cs">
+      <Filter>Source\AGP</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\AGP\AGP.cpp">
+      <Filter>Source\AGP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\AGP.h">
+      <Filter>Source\AGP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\AGPGameInstance.cpp">
+      <Filter>Source\AGP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\AGPGameInstance.h">
+      <Filter>Source\AGP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\AGPGameModeBase.cpp">
+      <Filter>Source\AGP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\AGPGameModeBase.h">
+      <Filter>Source\AGP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\PickupBounceComponent.cpp">
+      <Filter>Source\AGP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\PickupBounceComponent.h">
+      <Filter>Source\AGP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\PickupRotatorComponent.cpp">
+      <Filter>Source\AGP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\PickupRotatorComponent.h">
+      <Filter>Source\AGP</Filter>
+    </ClInclude>
+    <Filter Include="Source\AGP\Characters">
+      <UniqueIdentifier>{5BEAA416-0654-34C0-8C6E-3ACFF7EB99BB}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\AGP\Characters\BaseCharacter.cpp">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Characters\BaseCharacter.h">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\Characters\EnemyCharacter.cpp">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Characters\EnemyCharacter.h">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\Characters\EnemyCharacterRoles.cpp">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Characters\EnemyCharacterRoles.h">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\Characters\HealthComponent.cpp">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Characters\HealthComponent.h">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\Characters\PlayerCharacter.cpp">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Characters\PlayerCharacter.h">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\Characters\WeaponComponent.cpp">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Characters\WeaponComponent.h">
+      <Filter>Source\AGP\Characters</Filter>
+    </ClInclude>
+    <Filter Include="Source\AGP\Landscape">
+      <UniqueIdentifier>{7C16FBDF-40F1-3CD8-B333-7723242720AF}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\AGP\Landscape\ProceduralLandscape.cpp">
+      <Filter>Source\AGP\Landscape</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Landscape\ProceduralLandscape.h">
+      <Filter>Source\AGP\Landscape</Filter>
+    </ClInclude>
+    <Filter Include="Source\AGP\Pathfinding">
+      <UniqueIdentifier>{A76E89EF-C3E5-3B71-909C-266E28A2AB63}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\AGP\Pathfinding\NavigationNode.cpp">
+      <Filter>Source\AGP\Pathfinding</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Pathfinding\NavigationNode.h">
+      <Filter>Source\AGP\Pathfinding</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\Pathfinding\PathfindingSubsystem.cpp">
+      <Filter>Source\AGP\Pathfinding</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Pathfinding\PathfindingSubsystem.h">
+      <Filter>Source\AGP\Pathfinding</Filter>
+    </ClInclude>
+    <Filter Include="Source\AGP\Pickups">
+      <UniqueIdentifier>{E8BBE415-F51B-3455-9887-7ACDE82BA4CB}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\AGP\Pickups\PickupBase.cpp">
+      <Filter>Source\AGP\Pickups</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Pickups\PickupBase.h">
+      <Filter>Source\AGP\Pickups</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\Pickups\PickupManagerSubsystem.cpp">
+      <Filter>Source\AGP\Pickups</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Pickups\PickupManagerSubsystem.h">
+      <Filter>Source\AGP\Pickups</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AGP\Pickups\WeaponPickup.cpp">
+      <Filter>Source\AGP\Pickups</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AGP\Pickups\WeaponPickup.h">
+      <Filter>Source\AGP\Pickups</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
