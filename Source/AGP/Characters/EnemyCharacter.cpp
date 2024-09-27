@@ -31,7 +31,6 @@ void AEnemyCharacter::BeginPlay()
 		UE_LOG(LogTemp, Error, TEXT("Unable to find the PathfindingSubsystem"))
 	}
 	if (PawnSensingComponent)
-	{
 		PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn);
 	}
 }
