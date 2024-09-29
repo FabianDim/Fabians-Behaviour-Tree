@@ -36,6 +36,8 @@ class AGP_API AEnemyCharacter : public ABaseCharacter
 public:
 	// Sets default values for this character's properties
 	AEnemyCharacter();
+	UPROPERTY(EditAnywhere)
+	class UBehaviorTree* BTAsset;
 
 protected:
 	// Called when the game starts or when spawned
@@ -58,6 +60,8 @@ protected:
 	 * Logic that controls the enemy character when in the Evade state.
 	 */
 	void TickEvade();
+
+
 
 	/**
 	 * A function bound to the UPawnSensingComponent's OnSeePawn event. This will set the SensedCharacter variable
