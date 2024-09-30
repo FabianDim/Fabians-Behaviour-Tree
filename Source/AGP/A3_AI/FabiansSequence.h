@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "A3_AI/FabiansComposite.h"
+#include "FabiansComposite.h"
 #include "FabiansSequence.generated.h"
 
 /**
