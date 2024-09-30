@@ -9,9 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="237dfedc-9084-439f-9227-6d6b70761d80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/ShooterMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/ShooterMap.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

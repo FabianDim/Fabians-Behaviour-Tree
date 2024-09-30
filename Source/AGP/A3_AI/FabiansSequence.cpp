@@ -18,6 +18,9 @@ EStatus AFabiansSequence::update()
 	while(true)
 	{
 		EStatus status = (*(*CurrentChild))->Tick(); // Dereferences a nested iterator to call Tick() and retrieve the status.
+		if(status != EStatus::Failure) return status;
+		//continue search for fallback until last child
+		if(CurrentChild == Children.end()) return EStatus::Failure;
 	}
-	return Super::update(); 
+	return EStatus::Invalid; 
 }
