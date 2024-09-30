@@ -8,7 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="237dfedc-9084-439f-9227-6d6b70761d80" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Content/Levels/ShooterMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/ShooterMap.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AGP/Characters/FabiansBehaviourTree.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AGP/Characters/FabiansBehaviourTree.h" beforeDir="false" />
@@ -22,9 +22,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -38,7 +37,7 @@
   &quot;keyToString&quot;: {
     &quot;C++ Project.AGP.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Basic-behaviour-tree&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Development&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -201,6 +200,7 @@
       <workItem from="1727580118331" duration="1761000" />
       <workItem from="1727583971945" duration="5120000" />
       <workItem from="1727624978659" duration="2526000" />
+      <workItem from="1727685763047" duration="2097000" />
     </task>
     <servers />
   </component>
