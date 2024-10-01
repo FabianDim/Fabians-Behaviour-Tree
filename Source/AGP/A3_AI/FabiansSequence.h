@@ -20,5 +20,16 @@ protected:
 	virtual void OnInitialise() override;
 	virtual EStatus update() override;
 	
+	
+};
+
+UCLASS()
+class AFabiansFilter : public AFabiansSequence
+{
+	GENERATED_BODY()
+
+public:
+	void AddCondition(AFabiansBehaviourTree* Condition);
+	void AddAction(AFabiansBehaviourTree* Action);
 };
 	

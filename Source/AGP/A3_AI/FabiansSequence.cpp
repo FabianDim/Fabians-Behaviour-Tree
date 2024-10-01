@@ -24,3 +24,14 @@ EStatus AFabiansSequence::update()
 	}
 	return EStatus::Invalid; 
 }
+
+/*Filter-------------------------------------------------------------------------------------------Filter*/
+void AFabiansFilter::AddCondition(AFabiansBehaviourTree* Condition)
+{
+	Children.Insert(Condition, 0);
+}
+void AFabiansFilter::AddAction(AFabiansBehaviourTree* Action)
+{
+	Children.Add(Action);
+}
+
