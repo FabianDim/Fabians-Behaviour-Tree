@@ -29,14 +29,35 @@ void AFabiansBehaviourTree::OnInitialise()
 
 void AFabiansBehaviourTree::OnTerminate(EStatus Status)
 {
+	
 }
 
+bool AFabiansBehaviourTree::IsTerminated() const
+{
+	return CurrentStatus == EStatus::Success || CurrentStatus == EStatus::Failure;
+}
+
+bool AFabiansBehaviourTree::IsRunning() const
+{
+	return CurrentStatus == EStatus::Running;
+}
 EStatus AFabiansBehaviourTree::Tick()
 {
 	if(CurrentStatus != EStatus::Running) OnInitialise();
 	CurrentStatus = update();
 	if(CurrentStatus != EStatus::Running) OnTerminate(CurrentStatus);
 	return CurrentStatus;
+}
+
+EStatus AFabiansBehaviourTree::GetStatus() const
+{
+	return CurrentStatus;
+}
+
+void AFabiansBehaviourTree::Abort()
+{
+	OnTerminate(EStatus::Aborted);
+	CurrentStatus = EStatus::Aborted;
 }
 
 AFabiansBehaviourTree::~AFabiansBehaviourTree()

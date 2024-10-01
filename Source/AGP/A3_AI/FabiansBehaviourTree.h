@@ -40,10 +40,15 @@ public:
 	AFabiansBehaviourTree() : BehaviorComponent(nullptr), CurrentStatus(EStatus::Invalid)
 	{
 	};
+	bool IsTerminated() const;
+	bool IsRunning() const;
+	void Abort();
+
 
 	virtual ~AFabiansBehaviourTree();
 
 	EStatus Tick();
+	EStatus GetStatus() const;
 	
 
 private:

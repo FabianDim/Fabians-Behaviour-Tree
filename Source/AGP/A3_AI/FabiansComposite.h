@@ -24,22 +24,3 @@ protected:
 	FBehaviors Children;
 	
 };
-
-UCLASS()
-class AFabiansParallel : public AFabiansComposite
-{
-	GENERATED_BODY()
-
-public:
-	enum EPolicy {
-		RequireOne,
-		RequireAll,
-	   };
-	AFabiansParallel(EPolicy Success, EPolicy Failure);
-protected:
-	EPolicy SuccessPolicy;
-	EPolicy FailurePolicy;
-	virtual EStatus update() override;
-};
-	
-};

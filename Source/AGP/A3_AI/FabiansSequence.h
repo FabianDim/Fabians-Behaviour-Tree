@@ -19,7 +19,7 @@ protected:
 	virtual ~AFabiansSequence();
 	virtual void OnInitialise() override;
 	virtual EStatus update() override;
-	
+	int32 CurrentChildIndex;
 	
 };
 

@@ -9,21 +9,35 @@ AFabiansSequence::~AFabiansSequence()
 
 void AFabiansSequence::OnInitialise()
 {
-	CurrentChild = Children.begin();
+	CurrentChildIndex = 0;
 }
+
 
 EStatus AFabiansSequence::update()
 {
-	//Keep going until a child behaviour says it's running
-	while(true)
+	// Keep going until a child behaviour says it's running
+	while (true)
 	{
-		EStatus status = (*(*CurrentChild))->Tick(); // Dereferences a nested iterator to call Tick() and retrieve the status.
-		if(status != EStatus::Failure) return status;
-		//continue search for fallback until last child
-		if(CurrentChild == Children.end()) return EStatus::Failure;
+		// Check if we've reached the end of the Children array
+		if (CurrentChildIndex >= Children.Num())
+		{
+			return EStatus::Failure;
+		}
+
+		// Call Tick() on the current child
+		EStatus status = Children[CurrentChildIndex]->Tick();
+
+		if (status != EStatus::Failure)
+		{
+			return status;
+		}
+
+		// Move to the next child
+		CurrentChildIndex++;
 	}
-	return EStatus::Invalid; 
+	return EStatus::Invalid;
 }
+
 
 /*Filter-------------------------------------------------------------------------------------------Filter*/
 void AFabiansFilter::AddCondition(AFabiansBehaviourTree* Condition)
