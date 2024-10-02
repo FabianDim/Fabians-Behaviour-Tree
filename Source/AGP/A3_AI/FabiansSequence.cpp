@@ -25,11 +25,11 @@ EStatus AFabiansSequence::update()
 		}
 
 		// Call Tick() on the current child
-		EStatus status = Children[CurrentChildIndex]->Tick();
+		EStatus Status = Children[CurrentChildIndex]->Tick();
 
-		if (status != EStatus::Failure)
+		if (Status != EStatus::Failure)
 		{
-			return status;
+			return Status;
 		}
 
 		// Move to the next child

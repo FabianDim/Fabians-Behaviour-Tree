@@ -15,11 +15,12 @@ class AGP_API AFabiansSequence : public AFabiansComposite
 	GENERATED_BODY()
 
 protected:
-	TOptional<FBehaviors::RangedForIteratorType> CurrentChild;
+	FBehaviors::TIterator CurrentChild;
 	virtual ~AFabiansSequence();
 	virtual void OnInitialise() override;
 	virtual EStatus update() override;
 	int32 CurrentChildIndex;
+	
 	
 };
 

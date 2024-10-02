@@ -20,6 +20,9 @@ public:
 		RequireAll,
 	   };
 	AFabiansParallel(EPolicy Success, EPolicy Failure);
+
+
+
 protected:
 	EPolicy SuccessPolicy;
 	EPolicy FailurePolicy;
@@ -27,4 +30,9 @@ protected:
 	void OnTerminate(EStatus Status);
 
 	AFabiansParallel(const FObjectInitializer& ObjectInitializer);
+};
+struct Monitor : public AFabiansParallel
+{
+	void AddCondition(AFabiansBehaviourTree* Condition);
+	void AddAction (AFabiansBehaviourTree* Action);
 };

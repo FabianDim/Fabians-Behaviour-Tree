@@ -32,7 +32,7 @@ protected:
 	AFabiansBehaviourTree(const FObjectInitializer& ObjectInitializer);
 	virtual EStatus update();
 	virtual void OnInitialise();
-	virtual void OnTerminate(EStatus Status);
+
 
 public:
 	/*constructor for the AFabiansBehaviourTree class that sets the behaviour
@@ -43,7 +43,7 @@ public:
 	bool IsTerminated() const;
 	bool IsRunning() const;
 	void Abort();
-
+	virtual void OnTerminate(EStatus Status);
 
 	virtual ~AFabiansBehaviourTree();
 
