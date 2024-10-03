@@ -7,22 +7,19 @@ void AFabiansSelector::OnInitialise()
 
 EStatus AFabiansSelector::update()
 {
-	while(true)
+	for (FBehaviors::TIterator It(Children); It; ++It)
 	{
-		if(CurrentChildIndex >= Children.Num())
-		{
-			return EStatus::Failure;
-		}
+		// Use the iterator to call Tick() on each child
+		EStatus Status = (*It)->Tick();
 
-		EStatus Status = Children[CurrentChildIndex]->Tick();
-
-		if(Status != EStatus::Failure)
+		if (Status != EStatus::Failure)
 		{
-			return Status;
+			return Status; // Return if the child status is not Failure
 		}
-		CurrentChildIndex++;
 	}
-	return EStatus::Invalid;
+
+	// If all children fail, return Failure
+	return EStatus::Failure;
 }
 
 

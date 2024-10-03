@@ -15,8 +15,8 @@ class AGP_API AFabiansSequence : public AFabiansComposite
 	GENERATED_BODY()
 
 protected:
-	FBehaviors::TIterator CurrentChild;
-	virtual ~AFabiansSequence();
+	//FBehaviors::TIterator CurrentChild;
+	//virtual ~AFabiansSequence();
 	virtual void OnInitialise() override;
 	virtual EStatus update() override;
 	int32 CurrentChildIndex;

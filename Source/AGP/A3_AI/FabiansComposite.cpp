@@ -4,3 +4,8 @@
 #include "FabiansComposite.h"
 
 
+void AFabiansComposite::AddChild(AFabiansBehaviourTree* Child)
+{
+	Children.Add(Child);
+}
+	

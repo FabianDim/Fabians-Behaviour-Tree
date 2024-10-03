@@ -3,39 +3,30 @@
 
 #include "FabiansSequence.h"
 
-AFabiansSequence::~AFabiansSequence()
-{
-}
+
 
 void AFabiansSequence::OnInitialise()
 {
 	CurrentChildIndex = 0;
+	
 }
-
 
 EStatus AFabiansSequence::update()
 {
 	// Keep going until a child behaviour says it's running
-	while (true)
+	for (FBehaviors::TIterator It(Children); It; ++It)
 	{
-		// Check if we've reached the end of the Children array
-		if (CurrentChildIndex >= Children.Num())
-		{
-			return EStatus::Failure;
-		}
-
-		// Call Tick() on the current child
-		EStatus Status = Children[CurrentChildIndex]->Tick();
+		// Use the iterator to call Tick() on each child
+		EStatus Status = (*It)->Tick();
 
 		if (Status != EStatus::Failure)
 		{
-			return Status;
+			return Status; // Return if the child status is not Failure
 		}
-
-		// Move to the next child
-		CurrentChildIndex++;
 	}
-	return EStatus::Invalid;
+
+	// If all children fail, return Failure
+	return EStatus::Failure;
 }
 
 

@@ -5,19 +5,19 @@
 
 void AFabiansActiveSelector::OnInitialise()
 {
-	FBehaviors::TIterator Prev = CurrentIterator;
+	CurrentChildIndex = 0;
 }
 
 bool operator!=(const TArray<AFabiansBehaviourTree*>::TIterator& Lhs, const TCheckedPointerIterator<TArray<AFabiansBehaviourTree*>::ElementType, TArray<AFabiansBehaviourTree*>::SizeType>& End);
 
 EStatus AFabiansActiveSelector::update()
 {
-	FBehaviors::TIterator Previous = CurrentIterator;
+	FBehaviors::TIterator Previous(Children);
 
 	AFabiansSelector::OnInitialise();
 	EStatus Result = AFabiansSelector::update();
 
-	if(Previous != Children.end())
+	if(Previous && Previous.GetIndex() < Children.Num())
 	{
 		(*Previous)->OnTerminate(EStatus::Aborted);
 	}
