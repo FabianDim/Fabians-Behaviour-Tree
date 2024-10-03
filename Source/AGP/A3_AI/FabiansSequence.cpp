@@ -13,19 +13,18 @@ void AFabiansSequence::OnInitialise()
 
 EStatus AFabiansSequence::update()
 {
-	// Keep going until a child behaviour says it's running
-	for (FBehaviors::TIterator It(Children); It; ++It)
+	while(true)
 	{
-		// Use the iterator to call Tick() on each child
-		EStatus Status = (*It)->Tick();
-
-		if (Status != EStatus::Failure)
+		for (FBehaviors::TIterator It(Children); It; ++It)
 		{
-			return Status; // Return if the child status is not Failure
+			EStatus Status = (*It)->Tick();
+
+			if (Status != EStatus::Failure)
+			{
+				return Status;
+			}
 		}
 	}
-
-	// If all children fail, return Failure
 	return EStatus::Failure;
 }
 

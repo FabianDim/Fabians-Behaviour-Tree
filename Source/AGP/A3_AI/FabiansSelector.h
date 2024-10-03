@@ -12,5 +12,5 @@ protected:
 	virtual void OnInitialise();
 	int32 CurrentChildIndex;
 	virtual EStatus update() override;
-	//FBehaviors::TIterator CurrentIterator;
+	FBehaviors::TIterator CurrentIterator;
 };

@@ -2,7 +2,6 @@
 
 void AFabiansSelector::OnInitialise()
 {
-	CurrentChildIndex = 0;
 }
 
 EStatus AFabiansSelector::update()
@@ -17,7 +16,6 @@ EStatus AFabiansSelector::update()
 			return Status; // Return if the child status is not Failure
 		}
 	}
-
 	// If all children fail, return Failure
 	return EStatus::Failure;
 }
