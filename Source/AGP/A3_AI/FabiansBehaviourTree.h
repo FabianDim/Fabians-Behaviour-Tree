@@ -33,6 +33,18 @@ protected:
 	virtual EStatus update();
 	virtual void OnInitialise();
 
+	UPROPERTY(Transient)
+	UBlackboardComponent* BlackboardComponent;
+
+	UPROPERTY(Transient)
+	UBehaviorTreeComponent* BehaviorTreeComponent;
+
+	virtual void OnPossess(APawn* InPawn) override;
+
+	virtual void BeginInactiveState() override;
+
+	
+
 
 public:
 	/*constructor for the AFabiansBehaviourTree class that sets the behaviour
@@ -49,6 +61,10 @@ public:
 
 	EStatus Tick();
 	EStatus GetStatus() const;
+
+	UFUNCTION(BlueprintCallable, Category=Behavior)
+	void ChaseTarget();
+	
 	
 
 private:
