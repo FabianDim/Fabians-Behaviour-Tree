@@ -21,7 +21,7 @@ enum class EStatus
 };
 
 UCLASS()
-class AGP_API AFabiansBehaviourTree : public AAIController
+class AGP_API UFabiansBehaviourTree : public UObject
 {
 	GENERATED_BODY()
 
@@ -29,7 +29,7 @@ class AGP_API AFabiansBehaviourTree : public AAIController
 
 protected:
 
-	AFabiansBehaviourTree(const FObjectInitializer& ObjectInitializer);
+	UFabiansBehaviourTree(const FObjectInitializer& ObjectInitializer);
 	virtual EStatus update();
 	virtual void OnInitialise();
 
@@ -39,17 +39,11 @@ protected:
 	UPROPERTY(Transient)
 	UBehaviorTreeComponent* BehaviorTreeComponent;
 
-	virtual void OnPossess(APawn* InPawn) override;
-
-	virtual void BeginInactiveState() override;
-
-	
-
-
 public:
 	/*constructor for the AFabiansBehaviourTree class that sets the behaviour
 	compoenent and inits the status to invalid.*/
-	AFabiansBehaviourTree() : BehaviorComponent(nullptr), CurrentStatus(EStatus::Invalid)
+	UFabiansBehaviourTree() : BlackboardComponent(nullptr), BehaviorTreeComponent(nullptr), BehaviorComponent(nullptr),
+	                          CurrentStatus(EStatus::Invalid)
 	{
 	};
 	bool IsTerminated() const;
@@ -57,7 +51,7 @@ public:
 	void Abort();
 	virtual void OnTerminate(EStatus Status);
 
-	virtual ~AFabiansBehaviourTree();
+	/*virtual ~AFabiansBehaviourTree();*/
 
 	EStatus Tick();
 	EStatus GetStatus() const;

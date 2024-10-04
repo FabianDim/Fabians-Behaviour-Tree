@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class AFabiansParallel : public AFabiansComposite
+class UFabiansParallel : public UFabiansComposite
 {
 	GENERATED_BODY()
 
@@ -19,7 +19,7 @@ public:
 		RequireOne,
 		RequireAll,
 	   };
-	AFabiansParallel(EPolicy Success, EPolicy Failure);
+	UFabiansParallel(EPolicy Success, EPolicy Failure);
 
 
 
@@ -29,10 +29,10 @@ protected:
 	virtual EStatus update() override;
 	void OnTerminate(EStatus Status);
 
-	AFabiansParallel(const FObjectInitializer& ObjectInitializer);
+	UFabiansParallel(const FObjectInitializer& ObjectInitializer);
 };
-struct Monitor : public AFabiansParallel
+struct Monitor : public UFabiansParallel
 {
-	void AddCondition(AFabiansBehaviourTree* Condition);
-	void AddAction (AFabiansBehaviourTree* Action);
+	void AddCondition(UFabiansBehaviourTree* Condition);
+	void AddAction (UFabiansBehaviourTree* Action);
 };

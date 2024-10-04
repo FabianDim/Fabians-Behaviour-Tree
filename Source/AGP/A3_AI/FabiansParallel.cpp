@@ -3,19 +3,19 @@
 
 #include "FabiansParallel.h"
 
-AFabiansParallel::AFabiansParallel(const FObjectInitializer& ObjectInitializer)
+UFabiansParallel::UFabiansParallel(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer), SuccessPolicy(), FailurePolicy()
 // Call parent constructor
 {
 	// Initialization logic (if any)
 }
 
-EStatus AFabiansParallel::update()
+EStatus UFabiansParallel::update()
 {
 	size_t SuccessCount = 0, FaliureCount = 0;
 	for(auto It : Children)
 	{
-		AFabiansBehaviourTree& b = *It;
+		UFabiansBehaviourTree& b = *It;
 		if(!b.IsTerminated()) b.Tick();
 		if(b.GetStatus() == EStatus::Success)
 		{
@@ -46,10 +46,10 @@ EStatus AFabiansParallel::update()
 	return EStatus::Running;
 }
 
-void AFabiansParallel::OnTerminate(EStatus Status)
+void UFabiansParallel::OnTerminate(EStatus Status)
 {
 	for (auto it: Children) {
-		AFabiansBehaviourTree& b = *it;
+		UFabiansBehaviourTree& b = *it;
 		if (b.IsRunning()) b.Abort();
 	}
 }

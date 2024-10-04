@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class AGP_API AFabiansActiveSelector : public AFabiansSelector
+class AGP_API UFabiansActiveSelector : public UFabiansSelector
 {
 	GENERATED_BODY()
 

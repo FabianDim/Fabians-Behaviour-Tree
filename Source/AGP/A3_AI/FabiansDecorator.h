@@ -8,19 +8,19 @@
  * 
  */
 UCLASS()
-class AGP_API AFabiansDecorator : public AFabiansBehaviourTree
+class AGP_API UFabiansDecorator : public UFabiansBehaviourTree
 {
 	GENERATED_BODY()
 
 protected:
-	AFabiansBehaviourTree* BehaviourTreeChild;
+	UFabiansBehaviourTree* BehaviourTreeChild;
 
 public:
 	// Constructor with FObjectInitializer
-	AFabiansDecorator(const FObjectInitializer& ObjectInitializer);
+	UFabiansDecorator(const FObjectInitializer& ObjectInitializer);
 
 	// Function to set the child, since we can't pass it through the constructor
-	void SetChild(AFabiansBehaviourTree* child)
+	void SetChild(UFabiansBehaviourTree* child)
 	{
 		BehaviourTreeChild = child;
 	}

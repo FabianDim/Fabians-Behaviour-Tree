@@ -1,10 +1,10 @@
 ﻿#include "FabiansSelector.h"
 
-void AFabiansSelector::OnInitialise()
+void UFabiansSelector::OnInitialise()
 {
 }
 
-EStatus AFabiansSelector::update()
+EStatus UFabiansSelector::update()
 {
 	for (FBehaviors::TIterator It(Children); It; ++It)
 	{
@@ -18,6 +18,10 @@ EStatus AFabiansSelector::update()
 	}
 	// If all children fail, return Failure
 	return EStatus::Failure;
+}
+
+UFabiansSelector::UFabiansSelector() : CurrentChildIndex(0)
+{
 }
 
 

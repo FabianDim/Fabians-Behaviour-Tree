@@ -9,7 +9,21 @@
   <component name="ChangeListManager">
     <list default="true" id="237dfedc-9084-439f-9227-6d6b70761d80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansParallel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansParallel.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansParallel.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansParallel.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSelector.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSelector.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSelector.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSelector.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +34,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/AGP/UHT/FabiansSelector.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/AGP/UHT/FabiansSequence.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.h" root0="FORCE_HIGHLIGHTING" />
@@ -32,26 +47,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C++ Project.AGP.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Behaviour-Tree-Components&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C++ Project.AGP.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Unreal-Intergration",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Fabian Di Mento\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Fabian Di Mento\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Fabian Di Mento\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Fabian Di Mento\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Fabian Di Mento\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Fabian Di Mento\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="AGP" type="CppProject" factoryName="C++ Project">
       <configuration_1>

@@ -5,13 +5,13 @@
 
 
 
-void AFabiansSequence::OnInitialise()
+void UFabiansSequence::OnInitialise()
 {
 	CurrentChildIndex = 0;
 	
 }
 
-EStatus AFabiansSequence::update()
+EStatus UFabiansSequence::update()
 {
 	while(true)
 	{
@@ -30,11 +30,11 @@ EStatus AFabiansSequence::update()
 
 
 /*Filter-------------------------------------------------------------------------------------------Filter*/
-void AFabiansFilter::AddCondition(AFabiansBehaviourTree* Condition)
+void UFabiansFilter::AddCondition(UFabiansBehaviourTree* Condition)
 {
 	Children.Insert(Condition, 0);
 }
-void AFabiansFilter::AddAction(AFabiansBehaviourTree* Action)
+void UFabiansFilter::AddAction(UFabiansBehaviourTree* Action)
 {
 	Children.Add(Action);
 }

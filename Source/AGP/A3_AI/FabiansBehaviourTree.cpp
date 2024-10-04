@@ -4,44 +4,44 @@
 #include "FabiansBehaviourTree.h"
 #include "AGP/Characters/EnemyCharacter.h"
 
-void AFabiansBehaviourTree::BeginPlay()
+/*void UFabiansBehaviourTree::BeginPlay()
 {
 	AEnemyCharacter* Enemy = Cast<AEnemyCharacter>(GetPawn());
 	if(Enemy)
 	{
 		RunBehaviorTree(Enemy->BTAsset);
 	}
-}
+}*/
 
-AFabiansBehaviourTree::AFabiansBehaviourTree(const FObjectInitializer& ObjectInitializer)
+UFabiansBehaviourTree::UFabiansBehaviourTree(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer), BehaviorComponent(nullptr), CurrentStatus(EStatus::Invalid)
 {
 }
 
-EStatus AFabiansBehaviourTree::update()
+EStatus UFabiansBehaviourTree::update()
 {
 	return EStatus::Invalid;
 }
 
-void AFabiansBehaviourTree::OnInitialise()
+void UFabiansBehaviourTree::OnInitialise()
 {
 }
 
-void AFabiansBehaviourTree::OnTerminate(EStatus Status)
+void UFabiansBehaviourTree::OnTerminate(EStatus Status)
 {
 	
 }
 
-bool AFabiansBehaviourTree::IsTerminated() const
+bool UFabiansBehaviourTree::IsTerminated() const
 {
 	return CurrentStatus == EStatus::Success || CurrentStatus == EStatus::Failure;
 }
 
-bool AFabiansBehaviourTree::IsRunning() const
+bool UFabiansBehaviourTree::IsRunning() const
 {
 	return CurrentStatus == EStatus::Running;
 }
-EStatus AFabiansBehaviourTree::Tick()
+EStatus UFabiansBehaviourTree::Tick()
 {
 	if(CurrentStatus != EStatus::Running) OnInitialise();
 	CurrentStatus = update();
@@ -49,17 +49,21 @@ EStatus AFabiansBehaviourTree::Tick()
 	return CurrentStatus;
 }
 
-EStatus AFabiansBehaviourTree::GetStatus() const
+EStatus UFabiansBehaviourTree::GetStatus() const
 {
 	return CurrentStatus;
 }
 
-void AFabiansBehaviourTree::Abort()
+void UFabiansBehaviourTree::ChaseTarget()
+{
+}
+
+void UFabiansBehaviourTree::Abort()
 {
 	OnTerminate(EStatus::Aborted);
 	CurrentStatus = EStatus::Aborted;
 }
 
-AFabiansBehaviourTree::~AFabiansBehaviourTree()
+/*UFabiansBehaviourTree::~UFabiansBehaviourTree()
 {
-}
+}*/

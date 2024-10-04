@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class AGP_API AFabiansSequence : public AFabiansComposite
+class AGP_API UFabiansSequence : public UFabiansComposite
 {
 	GENERATED_BODY()
 
@@ -25,12 +25,12 @@ protected:
 };
 
 UCLASS()
-class AFabiansFilter : public AFabiansSequence
+class UFabiansFilter : public UFabiansSequence
 {
 	GENERATED_BODY()
 
 public:
-	void AddCondition(AFabiansBehaviourTree* Condition);
-	void AddAction(AFabiansBehaviourTree* Action);
+	void AddCondition(UFabiansBehaviourTree* Condition);
+	void AddAction(UFabiansBehaviourTree* Action);
 };
 	

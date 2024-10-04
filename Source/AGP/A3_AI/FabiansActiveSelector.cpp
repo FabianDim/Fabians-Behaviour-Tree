@@ -3,19 +3,19 @@
 
 #include "FabiansActiveSelector.h"
 
-void AFabiansActiveSelector::OnInitialise()
+void UFabiansActiveSelector::OnInitialise()
 {
 	CurrentChildIndex = 0;
 }
 
-bool operator!=(const TArray<AFabiansBehaviourTree*>::TIterator& Lhs, const TCheckedPointerIterator<TArray<AFabiansBehaviourTree*>::ElementType, TArray<AFabiansBehaviourTree*>::SizeType>& End);
+//bool operator!=(const TArray<UFabiansBehaviourTree*>::TIterator& Lhs, const TCheckedPointerIterator<TArray<UFabiansBehaviourTree*>::ElementType, TArray<UFabiansBehaviourTree*>::SizeType>& End);
 
-EStatus AFabiansActiveSelector::update()
+EStatus UFabiansActiveSelector::update()
 {
 	FBehaviors::TIterator Previous(Children);
 
-	AFabiansSelector::OnInitialise();
-	EStatus Result = AFabiansSelector::update();
+	UFabiansSelector::OnInitialise();
+	EStatus Result = UFabiansSelector::update();
 
 	if(Previous && Previous.GetIndex() < Children.Num())
 	{

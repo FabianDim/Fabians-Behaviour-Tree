@@ -10,18 +10,18 @@
  * 
  */
 UCLASS()
-class AGP_API AFabiansComposite : public AFabiansBehaviourTree
+class AGP_API UFabiansComposite : public UFabiansBehaviourTree
 {
 	GENERATED_BODY()
 
 public:
 	
-	void AddChild(AFabiansBehaviourTree* Child);
-	void RemoveChild(AFabiansBehaviourTree*);
+	void AddChild(UFabiansBehaviourTree* Child);
+	void RemoveChild(UFabiansBehaviourTree*);
 	void ClearChildren();
 
 protected:
-	typedef TArray<AFabiansBehaviourTree*> FBehaviors;
+	typedef TArray<UFabiansBehaviourTree*> FBehaviors;
 	FBehaviors Children;
 	
 };
