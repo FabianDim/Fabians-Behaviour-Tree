@@ -13,5 +13,24 @@ UCLASS()
 class AGP_API AFabiansSequence : public AFabiansComposite
 {
 	GENERATED_BODY()
+
+protected:
+	//FBehaviors::TIterator CurrentChild;
+	//virtual ~AFabiansSequence();
+	virtual void OnInitialise() override;
+	virtual EStatus update() override;
+	int32 CurrentChildIndex;
+	
 	
 };
+
+UCLASS()
+class AFabiansFilter : public AFabiansSequence
+{
+	GENERATED_BODY()
+
+public:
+	void AddCondition(AFabiansBehaviourTree* Condition);
+	void AddAction(AFabiansBehaviourTree* Action);
+};
+	

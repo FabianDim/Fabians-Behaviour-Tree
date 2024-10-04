@@ -15,7 +15,8 @@ class AGP_API AFabiansComposite : public AFabiansBehaviourTree
 	GENERATED_BODY()
 
 public:
-	void AddChild(AFabiansBehaviourTree*);
+	
+	void AddChild(AFabiansBehaviourTree* Child);
 	void RemoveChild(AFabiansBehaviourTree*);
 	void ClearChildren();
 
