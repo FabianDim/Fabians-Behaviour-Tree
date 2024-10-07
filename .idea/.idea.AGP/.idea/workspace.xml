@@ -9,8 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="237dfedc-9084-439f-9227-6d6b70761d80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansParallel.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansParallel.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +215,7 @@
       <workItem from="1728201873586" duration="4355000" />
       <workItem from="1728225120285" duration="1091000" />
       <workItem from="1728261280139" duration="1590000" />
-      <workItem from="1728267508825" duration="26077000" />
+      <workItem from="1728267508825" duration="26774000" />
     </task>
     <servers />
   </component>
