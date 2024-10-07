@@ -21,11 +21,12 @@ public:
 	   };
 	UFabiansParallel(EPolicy Success, EPolicy Failure);
 
-
-
-protected:
+public:
 	EPolicy SuccessPolicy;
 	EPolicy FailurePolicy;
+
+protected:
+
 	virtual EStatus update() override;
 	void OnTerminate(EStatus Status);
 

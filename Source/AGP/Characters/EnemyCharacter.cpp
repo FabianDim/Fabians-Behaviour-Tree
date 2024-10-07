@@ -5,8 +5,13 @@
 #include "EngineUtils.h"
 #include "HealthComponent.h"
 #include "PlayerCharacter.h"
+#include "AGP/A3_AI/FabiansParallel.h"
+#include "AGP/A3_AI/FabiansSelector.h"
+#include "AGP/A3_AI/FabiansSequence.h"
+#include "AGP/A3_AI/MoveToPlayerAction.h"
 #include "AGP/A3_AI/PatrolAction.h"
 #include "AGP/A3_AI/PlayerDetectedCondition.h"
+#include "AGP/A3_AI/UShootAction.h"
 #include "AGP/Pathfinding/PathfindingSubsystem.h"
 #include "Perception/PawnSensingComponent.h"
 
@@ -32,30 +37,81 @@ void AEnemyCharacter::GetTickEngage()
 // Called when the game starts or when spawned
 void AEnemyCharacter::BeginPlay()
 {
-	
 	Super::BeginPlay();
 
+	// Initialize the PathfindingSubsystem
 	PathfindingSubsystem = GetWorld()->GetSubsystem<UPathfindingSubsystem>();
-	if (PathfindingSubsystem)
+	if (!PathfindingSubsystem)
 	{
-		CurrentPath = PathfindingSubsystem->GetRandomPath(GetActorLocation());
-	} else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Unable to find the PathfindingSubsystem"))
+		UE_LOG(LogTemp, Error, TEXT("Unable to find the PathfindingSubsystem"));
+		return; // Early exit if subsystem is not found
 	}
+
+	// Initialize the CurrentPath
+	CurrentPath = PathfindingSubsystem->GetRandomPath(GetActorLocation());
+
+	// Initialize the PawnSensingComponent
 	if (PawnSensingComponent)
 	{
 		PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn);
 	}
-	UPlayerDetectedCondition* PlayerDetected = NewObject<UPlayerDetectedCondition>(this);
-	UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
-
-	if(PlayerDetected->update() == EStatus::Success)
+	else
 	{
-		PatrolAction->update();
+		UE_LOG(LogTemp, Error, TEXT("PawnSensingComponent is null"));
 	}
 
-	
+	BehaviourTreeRoot = NewObject<UFabiansSelector>(this);
+
+	// Create Engage Sequence
+	UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
+	UPlayerDetectedCondition* PlayerDetected = NewObject<UPlayerDetectedCondition>(this);
+
+	// Set EnemyCharacter reference
+	PlayerDetected->EnemyCharacter = this;
+
+	// Create Attack Parallel Node
+	UFabiansParallel* AttackParallel = NewObject<UFabiansParallel>(this);
+	AttackParallel->SuccessPolicy = UFabiansParallel::EPolicy::RequireOne;
+	AttackParallel->FailurePolicy = UFabiansParallel::EPolicy::RequireAll;
+
+	// Create Shoot and Move Actions
+	UShootAction* ShootAction = NewObject<UShootAction>(this);
+	UMoveToPlayerAction* MoveAction = NewObject<UMoveToPlayerAction>(this);
+
+	// Set EnemyCharacter references
+	ShootAction->EnemyCharacter = this;
+	MoveAction->EnemyCharacter = this;
+
+	// Build Attack Parallel Node
+	AttackParallel->AddChild(ShootAction);
+	AttackParallel->AddChild(MoveAction);
+
+	// Build Engage Sequence
+	EngageSequence->AddChild(PlayerDetected);
+	EngageSequence->AddChild(AttackParallel);
+
+	// Create Evade Filter
+	UFabiansFilter* EvadeFilter = NewObject<UFabiansFilter>(this);
+	//ULowHealthCondition* LowHealthCondition = NewObject<ULowHealthCondition>(this);
+	//UEvadeAction* EvadeAction = NewObject<UEvadeAction>(this);
+
+	// Set EnemyCharacter references
+	//LowHealthCondition->EnemyCharacter = this;
+	//EvadeAction->EnemyCharacter = this;
+
+	// Build Evade Filter
+	/*EvadeFilter->AddCondition(LowHealthCondition);*/
+	//EvadeFilter->AddAction(EvadeAction);
+
+	// Create Patrol Action
+	UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
+	PatrolAction->EnemyCharacter = this;
+
+	// Build the root behavior tree
+	UFabiansSelector* RootSelector = Cast<UFabiansSelector>(BehaviourTreeRoot);
+	RootSelector->AddChild(EngageSequence);
+	RootSelector->AddChild(EvadeFilter);
+	RootSelector->AddChild(PatrolAction);
 }
 
 void AEnemyCharacter::MoveAlongPath()
@@ -147,6 +203,10 @@ void AEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (BehaviourTreeRoot)
+	{
+		BehaviourTreeRoot->Tick();
+	}
 }
 
 // Called to bind functionality to input
