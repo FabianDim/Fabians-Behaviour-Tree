@@ -17,7 +17,7 @@ EStatus UShootAction::update()
 	}
 
 	// Implement shooting logic
-	EnemyCharacter->();
+	EnemyCharacter->GetTickEngage();
 
 	return EStatus::Running;
 }

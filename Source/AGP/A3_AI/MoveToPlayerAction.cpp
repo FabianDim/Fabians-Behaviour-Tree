@@ -1,0 +1,23 @@
+// MoveToPlayerAction.cpp
+
+#include "MoveToPlayerAction.h"
+#include "AGP/Characters/EnemyCharacter.h"
+
+UMoveToPlayerAction::UMoveToPlayerAction()
+{
+	EnemyCharacter = nullptr;
+	CurrentStatus = EStatus::Invalid;
+}
+
+EStatus UMoveToPlayerAction::update()
+{
+	if (!EnemyCharacter || !EnemyCharacter->SensedCharacter)
+	{
+		return EStatus::Failure;
+	}
+
+	// Implement movement towards player logic
+	EnemyCharacter->GetTickPatrol();
+
+	return EStatus::Running;
+}

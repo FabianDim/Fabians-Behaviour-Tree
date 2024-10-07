@@ -24,6 +24,11 @@ void AEnemyCharacter::GetTickPatrol()
 	TickPatrol();
 }
 
+void AEnemyCharacter::GetTickEngage()
+{
+	TickEngage();
+}
+
 // Called when the game starts or when spawned
 void AEnemyCharacter::BeginPlay()
 {

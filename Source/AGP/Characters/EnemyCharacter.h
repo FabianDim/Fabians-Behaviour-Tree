@@ -41,6 +41,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	class UBehaviorTree* BTAsset;
 	void GetTickPatrol();
+	void GetTickEngage();
 
 protected:
 	// Called when the game starts or when spawned
