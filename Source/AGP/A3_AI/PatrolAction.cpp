@@ -3,8 +3,9 @@
 
 #include "PatrolAction.h"
 
-UPatrolAction::UPatrolAction(): EnemyCharacter(nullptr)
+UPatrolAction::UPatrolAction()
 {
+	EnemyCharacter = nullptr;
 	CurrentStatus = EStatus::Invalid;
 }
 

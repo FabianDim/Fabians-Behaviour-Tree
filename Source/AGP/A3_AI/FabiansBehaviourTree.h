@@ -31,7 +31,6 @@ protected:
 
 	UFabiansBehaviourTree(const FObjectInitializer& ObjectInitializer);
 	virtual EStatus update();
-	virtual void OnInitialise();
 	EStatus CurrentStatus;
 	UPROPERTY(Transient)
 	UBlackboardComponent* BlackboardComponent;
@@ -52,7 +51,7 @@ public:
 	virtual void OnTerminate(EStatus Status);
 
 	/*virtual ~AFabiansBehaviourTree();*/
-
+	virtual void OnInitialise();
 	EStatus Tick();
 	EStatus GetStatus() const;
 

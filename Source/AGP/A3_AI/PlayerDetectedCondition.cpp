@@ -11,17 +11,11 @@ UPlayerDetectedCondition::UPlayerDetectedCondition()
 
 EStatus UPlayerDetectedCondition::update()
 {
-	if(!EnemyCharacter)
+	if (!EnemyCharacter)
 	{
 		return EStatus::Failure;
 	}
-	if(EnemyCharacter->SensedCharacter)
-	{
-		return EStatus::Success;
-	}
-	else
-	{
-		return EStatus::Failure;
-	}
+
+	return EnemyCharacter->SensedCharacter ? EStatus::Success : EStatus::Failure;
 }
 

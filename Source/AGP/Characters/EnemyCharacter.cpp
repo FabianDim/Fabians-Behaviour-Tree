@@ -5,6 +5,8 @@
 #include "EngineUtils.h"
 #include "HealthComponent.h"
 #include "PlayerCharacter.h"
+#include "AGP/A3_AI/PatrolAction.h"
+#include "AGP/A3_AI/PlayerDetectedCondition.h"
 #include "AGP/Pathfinding/PathfindingSubsystem.h"
 #include "Perception/PawnSensingComponent.h"
 
@@ -25,7 +27,30 @@ void AEnemyCharacter::GetTickPatrol()
 // Called when the game starts or when spawned
 void AEnemyCharacter::BeginPlay()
 {
+	
 	Super::BeginPlay();
+
+	PathfindingSubsystem = GetWorld()->GetSubsystem<UPathfindingSubsystem>();
+	if (PathfindingSubsystem)
+	{
+		CurrentPath = PathfindingSubsystem->GetRandomPath(GetActorLocation());
+	} else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Unable to find the PathfindingSubsystem"))
+	}
+	if (PawnSensingComponent)
+	{
+		PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn);
+	}
+	UPlayerDetectedCondition* PlayerDetected = NewObject<UPlayerDetectedCondition>(this);
+	UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
+
+	if(PlayerDetected->update() == EStatus::Success)
+	{
+		PatrolAction->update();
+	}
+
+	
 }
 
 void AEnemyCharacter::MoveAlongPath()
@@ -117,47 +142,6 @@ void AEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	UpdateSight();
-	
-	switch(CurrentState)
-	{
-	case EEnemyState::Patrol:
-		TickPatrol();
-		if (SensedCharacter)
-		{
-			if (HealthComponent->GetCurrentHealthPercentage() >= 0.4f)
-			{
-				CurrentState = EEnemyState::Engage;
-			} else
-			{
-				CurrentState = EEnemyState::Evade;
-			}
-			CurrentPath.Empty();
-		}
-		break;
-	case EEnemyState::Engage:
-		TickEngage();
-		if (HealthComponent->GetCurrentHealthPercentage() < 0.4f)
-		{
-			CurrentPath.Empty();
-			CurrentState = EEnemyState::Evade;
-		} else if (!SensedCharacter)
-		{
-			CurrentState = EEnemyState::Patrol;
-		}
-		break;
-	case EEnemyState::Evade:
-		TickEvade();
-		if (HealthComponent->GetCurrentHealthPercentage() >= 0.4f)
-		{
-			CurrentPath.Empty();
-			CurrentState = EEnemyState::Engage;
-		} else if (!SensedCharacter)
-		{
-			CurrentState = EEnemyState::Patrol;
-		}
-		break;
-	}
 }
 
 // Called to bind functionality to input

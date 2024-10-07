@@ -1,24 +1,22 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+// ShootAction.h
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "FabiansBehaviourTree.h"
-#include "AGP/Characters/EnemyCharacter.h"
-#include "PatrolAction.generated.h"
+#include "UShootAction.generated.h"
 
-/**
- * 
- */
 UCLASS()
-class AGP_API UPatrolAction : public UFabiansBehaviourTree
+class AGP_API UShootAction : public UFabiansBehaviourTree
 {
 	GENERATED_BODY()
-	UPatrolAction();
+
 public:
+	UShootAction();
+
 	virtual EStatus update() override;
 
 	UPROPERTY()
 	AEnemyCharacter* EnemyCharacter;
-	
 };
