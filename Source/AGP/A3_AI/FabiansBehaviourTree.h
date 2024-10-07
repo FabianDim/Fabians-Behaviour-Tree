@@ -32,7 +32,7 @@ protected:
 	UFabiansBehaviourTree(const FObjectInitializer& ObjectInitializer);
 	virtual EStatus update();
 	virtual void OnInitialise();
-
+	EStatus CurrentStatus;
 	UPROPERTY(Transient)
 	UBlackboardComponent* BlackboardComponent;
 
@@ -58,13 +58,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category=Behavior)
 	void ChaseTarget();
-	
-	
+
 
 private:
 	UPROPERTY(EditAnywhere)
 	UBehaviorTreeComponent* BehaviorComponent;
 
-	EStatus CurrentStatus;
 	
 };

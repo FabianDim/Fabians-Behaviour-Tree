@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+//#include "FabiansBehaviourTree.generated.h"
 #include "BaseCharacter.h"
 #include "PlayerCharacter.h"
+#include "AGP/A3_AI/FabiansBehaviourTree.h"
 #include "EnemyCharacter.generated.h"
 
 // Forward declarations to avoid needing to #include files in the header of this class.
@@ -38,6 +40,7 @@ public:
 	AEnemyCharacter();
 	UPROPERTY(EditAnywhere)
 	class UBehaviorTree* BTAsset;
+	void GetTickPatrol();
 
 protected:
 	// Called when the game starts or when spawned
@@ -93,8 +96,7 @@ protected:
 	 * A pointer to a PlayerCharacter that can be seen by this enemy character. If this is nullptr then the enemy cannot
 	 * see any PlayerCharacter.
 	 */
-	UPROPERTY()
-	APlayerCharacter* SensedCharacter = nullptr;
+
 
 	/**
 	 * An array of vectors representing the current path that the agent is traversing along.
@@ -116,7 +118,8 @@ protected:
 	float PathfindingError = 150.0f; // 150 cm from target by default.
 
 public:	
-
+	UPROPERTY()
+	APlayerCharacter* SensedCharacter = nullptr;
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -128,4 +131,6 @@ private:
 	 */
 	APlayerCharacter* FindPlayer() const;
 
+	UPROPERTY()
+	UFabiansBehaviourTree* BehaviourTreeRoot;
 };

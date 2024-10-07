@@ -17,23 +17,15 @@ AEnemyCharacter::AEnemyCharacter()
 	PawnSensingComponent = CreateDefaultSubobject<UPawnSensingComponent>("Pawn Sensing Component");
 }
 
+void AEnemyCharacter::GetTickPatrol()
+{
+	TickPatrol();
+}
+
 // Called when the game starts or when spawned
 void AEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
-	PathfindingSubsystem = GetWorld()->GetSubsystem<UPathfindingSubsystem>();
-	if (PathfindingSubsystem)
-	{
-		CurrentPath = PathfindingSubsystem->GetRandomPath(GetActorLocation());
-	} else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Unable to find the PathfindingSubsystem"))
-	}
-
-	if (PawnSensingComponent){
-		PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn);
-	}
 }
 
 void AEnemyCharacter::MoveAlongPath()

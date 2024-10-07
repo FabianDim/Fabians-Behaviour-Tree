@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "FabiansBehaviourTree.h"
 #include "AGP/Characters/EnemyCharacter.h"
 
@@ -16,6 +15,7 @@
 UFabiansBehaviourTree::UFabiansBehaviourTree(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer), BehaviorComponent(nullptr), CurrentStatus(EStatus::Invalid)
 {
+	
 }
 
 EStatus UFabiansBehaviourTree::update()
@@ -57,6 +57,7 @@ EStatus UFabiansBehaviourTree::GetStatus() const
 void UFabiansBehaviourTree::ChaseTarget()
 {
 }
+
 
 void UFabiansBehaviourTree::Abort()
 {
