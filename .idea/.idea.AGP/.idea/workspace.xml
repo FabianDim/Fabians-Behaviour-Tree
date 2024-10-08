@@ -9,6 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="237dfedc-9084-439f-9227-6d6b70761d80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +30,16 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://10" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://17" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/AGP/UHT/FabiansSelector.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/AGP/UHT/FabiansSequence.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -216,6 +229,7 @@
       <workItem from="1728225120285" duration="1091000" />
       <workItem from="1728261280139" duration="1590000" />
       <workItem from="1728267508825" duration="26774000" />
+      <workItem from="1728349796473" duration="24000000" />
     </task>
     <servers />
   </component>
@@ -225,5 +239,17 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CppProject">
+        <watch expression="this" />
+        <watch expression="this-&gt;UObject" />
+        <watch expression="this-&gt;CurrentStatus" />
+        <watch expression="this-&gt;BlackboardComponent" />
+        <watch expression="this-&gt;BehaviorTreeComponent" />
+        <watch expression="this-&gt;BehaviorComponent" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

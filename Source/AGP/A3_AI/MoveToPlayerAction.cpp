@@ -17,7 +17,7 @@ EStatus UMoveToPlayerAction::update()
 	}
 
 	// Implement movement towards player logic
-	EnemyCharacter->GetTickPatrol();
+	EnemyCharacter->GetTickEngage();
 
 	return EStatus::Running;
 }

@@ -13,19 +13,33 @@ void UFabiansSequence::OnInitialise()
 
 EStatus UFabiansSequence::update()
 {
-	while(true)
-	{
-		for (FBehaviors::TIterator It(Children); It; ++It)
-		{
-			EStatus Status = (*It)->Tick();
+    while (CurrentChildIndex < Children.Num())
+    {
+        UFabiansBehaviourTree* CurrentChild = Children[CurrentChildIndex];
 
-			if (Status != EStatus::Failure)
-			{
-				return Status;
-			}
-		}
-	}
-	return EStatus::Failure;
+        if (!CurrentChild)
+        {
+            UE_LOG(LogTemp, Error, TEXT("Null child in sequence at index %d"), CurrentChildIndex);
+            ++CurrentChildIndex;
+            continue;
+        }
+
+        EStatus Status = CurrentChild->Tick();
+
+        if (Status == EStatus::Running)
+        {
+            return EStatus::Running;
+        }
+
+        if (Status == EStatus::Failure)
+        {
+            return EStatus::Failure;
+        }
+
+        // Move to the next child
+        ++CurrentChildIndex;
+    }
+    return EStatus::Success;
 }
 
 

@@ -5,6 +5,7 @@
 #include "EngineUtils.h"
 #include "HealthComponent.h"
 #include "PlayerCharacter.h"
+#include "AGP/A3_AI/FabiansActiveSelector.h"
 #include "AGP/A3_AI/FabiansParallel.h"
 #include "AGP/A3_AI/FabiansSelector.h"
 #include "AGP/A3_AI/FabiansSequence.h"
@@ -37,82 +38,105 @@ void AEnemyCharacter::GetTickEngage()
 // Called when the game starts or when spawned
 void AEnemyCharacter::BeginPlay()
 {
-	Super::BeginPlay();
+    Super::BeginPlay();
 
-	// Initialize the PathfindingSubsystem
-	PathfindingSubsystem = GetWorld()->GetSubsystem<UPathfindingSubsystem>();
-	if (!PathfindingSubsystem)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Unable to find the PathfindingSubsystem"));
-		return; // Early exit if subsystem is not found
-	}
+    // Initialize the PathfindingSubsystem
+    PathfindingSubsystem = GetWorld()->GetSubsystem<UPathfindingSubsystem>();
+    if (!PathfindingSubsystem)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Unable to find the PathfindingSubsystem"));
+        return; // Early exit if subsystem is not found
+    }
 
-	// Initialize the CurrentPath
-	CurrentPath = PathfindingSubsystem->GetRandomPath(GetActorLocation());
+    // Initialize the CurrentPath
+    CurrentPath = PathfindingSubsystem->GetRandomPath(GetActorLocation());
 
-	// Initialize the PawnSensingComponent
-	if (PawnSensingComponent)
-	{
-		PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("PawnSensingComponent is null"));
-	}
+    // Initialize the PawnSensingComponent
+    if (PawnSensingComponent)
+    {
+        PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn);
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("PawnSensingComponent is null"));
+    }
 
-	BehaviourTreeRoot = NewObject<UFabiansSelector>(this);
+    // Create the root behavior tree node as UFabiansActiveSelector
+    BehaviourTreeRoot = NewObject<UFabiansActiveSelector>(this);
+    UFabiansActiveSelector* RootSelector = Cast<UFabiansActiveSelector>(BehaviourTreeRoot);
+    if (!RootSelector)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to cast BehaviourTreeRoot to UFabiansActiveSelector"));
+        return;
+    }
 
-	// Create Engage Sequence
-	UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
-	UPlayerDetectedCondition* PlayerDetected = NewObject<UPlayerDetectedCondition>(this);
+    // Create the Engage Sequence
+    UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
+    if (!EngageSequence)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create EngageSequence"));
+        return;
+    }
 
-	// Set EnemyCharacter reference
-	PlayerDetected->EnemyCharacter = this;
+    // Create the PlayerDetectedCondition
+    UPlayerDetectedCondition* PlayerDetected = NewObject<UPlayerDetectedCondition>(this);
+    if (!PlayerDetected)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create PlayerDetected"));
+        return;
+    }
+    PlayerDetected->EnemyCharacter = this;
 
-	// Create Attack Parallel Node
-	UFabiansParallel* AttackParallel = NewObject<UFabiansParallel>(this);
-	AttackParallel->SuccessPolicy = UFabiansParallel::EPolicy::RequireOne;
-	AttackParallel->FailurePolicy = UFabiansParallel::EPolicy::RequireAll;
+    // Create the Attack Parallel node
+    UFabiansParallel* AttackParallel = NewObject<UFabiansParallel>(this);
+    if (!AttackParallel)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create AttackParallel"));
+        return;
+    }
+    AttackParallel->SuccessPolicy = UFabiansParallel::EPolicy::RequireAll;
+    AttackParallel->FailurePolicy = UFabiansParallel::EPolicy::RequireOne;
 
-	// Create Shoot and Move Actions
-	UShootAction* ShootAction = NewObject<UShootAction>(this);
-	UMoveToPlayerAction* MoveAction = NewObject<UMoveToPlayerAction>(this);
+    // Create the MoveToPlayerAction
+    UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
+    if (!MoveToPlayerAction)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create MoveToPlayerAction"));
+        return;
+    }
+    MoveToPlayerAction->EnemyCharacter = this;
 
-	// Set EnemyCharacter references
-	ShootAction->EnemyCharacter = this;
-	MoveAction->EnemyCharacter = this;
+    // Create the ShootAction
+    UShootAction* ShootAction = NewObject<UShootAction>(this);
+    if (!ShootAction)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create ShootAction"));
+        return;
+    }
+    ShootAction->EnemyCharacter = this;
 
-	// Build Attack Parallel Node
-	AttackParallel->AddChild(ShootAction);
-	AttackParallel->AddChild(MoveAction);
+    // Add actions to the AttackParallel
+    AttackParallel->AddChild(MoveToPlayerAction);
+    AttackParallel->AddChild(ShootAction);
 
-	// Build Engage Sequence
-	EngageSequence->AddChild(PlayerDetected);
-	EngageSequence->AddChild(AttackParallel);
+    // Build the EngageSequence
+    EngageSequence->AddChild(PlayerDetected);
+    EngageSequence->AddChild(AttackParallel);
 
-	// Create Evade Filter
-	UFabiansFilter* EvadeFilter = NewObject<UFabiansFilter>(this);
-	//ULowHealthCondition* LowHealthCondition = NewObject<ULowHealthCondition>(this);
-	//UEvadeAction* EvadeAction = NewObject<UEvadeAction>(this);
+    // Create the PatrolAction
+    UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
+    if (!PatrolAction)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create PatrolAction"));
+        return;
+    }
+    PatrolAction->EnemyCharacter = this;
 
-	// Set EnemyCharacter references
-	//LowHealthCondition->EnemyCharacter = this;
-	//EvadeAction->EnemyCharacter = this;
-
-	// Build Evade Filter
-	/*EvadeFilter->AddCondition(LowHealthCondition);*/
-	//EvadeFilter->AddAction(EvadeAction);
-
-	// Create Patrol Action
-	UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
-	PatrolAction->EnemyCharacter = this;
-
-	// Build the root behavior tree
-	UFabiansSelector* RootSelector = Cast<UFabiansSelector>(BehaviourTreeRoot);
-	RootSelector->AddChild(EngageSequence);
-	RootSelector->AddChild(EvadeFilter);
-	RootSelector->AddChild(PatrolAction);
+    // Build the behavior tree
+    RootSelector->AddChild(EngageSequence);
+    RootSelector->AddChild(PatrolAction);
 }
+
 
 void AEnemyCharacter::MoveAlongPath()
 {
