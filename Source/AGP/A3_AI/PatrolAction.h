@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "FabiansBehaviourTree.h"
+#include "FabiansDecorator.h"
 #include "AGP/Characters/EnemyCharacter.h"
 #include "PatrolAction.generated.h"
 
@@ -11,14 +12,19 @@
  * 
  */
 UCLASS()
-class AGP_API UPatrolAction : public UFabiansBehaviourTree
+class AGP_API UPatrolAction : public UFabiansDecorator
 {
 	GENERATED_BODY()
-	UPatrolAction();
+
 public:
+	// Constructor with FObjectInitializer
+	UPatrolAction(const FObjectInitializer& ObjectInitializer);
+
 	virtual EStatus update() override;
 
 	UPROPERTY()
 	AEnemyCharacter* EnemyCharacter;
 	
+protected:
+	EStatus CurrentStatus;
 };

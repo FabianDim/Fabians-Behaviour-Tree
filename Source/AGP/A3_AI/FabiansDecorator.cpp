@@ -6,3 +6,8 @@ UFabiansDecorator::UFabiansDecorator(const FObjectInitializer& ObjectInitializer
 	// Any other initialization code
 	BehaviourTreeChild = nullptr;
 }
+
+void UFabiansDecorator::SetChild(UFabiansBehaviourTree* Child)
+{
+	BehaviourTreeChild = Child;
+}

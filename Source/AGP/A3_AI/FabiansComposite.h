@@ -22,6 +22,7 @@ public:
 
 protected:
 	typedef TArray<UFabiansBehaviourTree*> FBehaviors;
-	FBehaviors Children;
+	UPROPERTY()
+	TArray<UFabiansBehaviourTree*> Children;
 	
 };

@@ -3,7 +3,8 @@
 
 #include "PatrolAction.h"
 
-UPatrolAction::UPatrolAction()
+UPatrolAction::UPatrolAction(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
 	EnemyCharacter = nullptr;
 	CurrentStatus = EStatus::Invalid;

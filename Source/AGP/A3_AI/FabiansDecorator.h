@@ -20,8 +20,5 @@ public:
 	UFabiansDecorator(const FObjectInitializer& ObjectInitializer);
 
 	// Function to set the child, since we can't pass it through the constructor
-	void SetChild(UFabiansBehaviourTree* child)
-	{
-		BehaviourTreeChild = child;
-	}
+	void SetChild(UFabiansBehaviourTree* Child);
 };
