@@ -11,7 +11,7 @@ void UFabiansComposite::AddChild(UFabiansBehaviourTree* Child)
 		UE_LOG(LogTemp, Error, TEXT("Attempted to add a null child to a composite node"));
 		return;
 	}
-	Children.Add(Child);
+	Children.Add(Child);//adds a child behaviour tree to the children array
 	
 }
 	

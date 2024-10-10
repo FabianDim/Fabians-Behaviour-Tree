@@ -21,9 +21,10 @@ EStatus UFabiansSequence::update()
         {
             UE_LOG(LogTemp, Error, TEXT("Null child in sequence at index %d"), CurrentChildIndex);
             ++CurrentChildIndex;
+            CurrentChild = Children[CurrentChildIndex];
             continue;
         }
-
+        
         EStatus Status = CurrentChild->Tick();
 
         if (Status == EStatus::Running)

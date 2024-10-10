@@ -35,23 +35,20 @@ void AEnemyCharacter::GetTickEngage()
 	TickEngage();
 }
 
-// Called when the game starts or when spawned
+
 void AEnemyCharacter::BeginPlay()
 {
     Super::BeginPlay();
-
-    // Initialize the PathfindingSubsystem
+	
     PathfindingSubsystem = GetWorld()->GetSubsystem<UPathfindingSubsystem>();
     if (!PathfindingSubsystem)
     {
         UE_LOG(LogTemp, Error, TEXT("Unable to find the PathfindingSubsystem"));
-        return; // Early exit if subsystem is not found
+        return;
     }
 
-    // Initialize the CurrentPath
     CurrentPath = PathfindingSubsystem->GetRandomPath(GetActorLocation());
-
-    // Initialize the PawnSensingComponent
+	
     if (PawnSensingComponent)
     {
         PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn);
