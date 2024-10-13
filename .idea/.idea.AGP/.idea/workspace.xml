@@ -8,14 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="237dfedc-9084-439f-9227-6d6b70761d80" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansParallel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansParallel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/PlayerDetectedCondition.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/PlayerDetectedCondition.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/UShootAction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/UShootAction.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +232,7 @@
       <workItem from="1728469948110" duration="5210000" />
       <workItem from="1728552323380" duration="10381000" />
       <workItem from="1728632028583" duration="3481000" />
-      <workItem from="1728792088948" duration="14268000" />
+      <workItem from="1728792088948" duration="14705000" />
     </task>
     <servers />
   </component>
