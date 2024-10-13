@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "FabiansBehaviourTree.h"
+#include "FabiansSequence.h"
 #include "AGP/Characters/EnemyCharacter.h"
 #include "PlayerDetectedCondition.generated.h"
 
@@ -11,7 +12,7 @@
  * 
  */
 UCLASS()
-class AGP_API UPlayerDetectedCondition : public UFabiansBehaviourTree
+class AGP_API UPlayerDetectedCondition : public UFabiansFilter
 {
 	GENERATED_BODY()
 

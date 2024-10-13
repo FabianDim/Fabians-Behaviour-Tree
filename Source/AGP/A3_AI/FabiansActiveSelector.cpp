@@ -8,9 +8,8 @@ void UFabiansActiveSelector::OnInitialise()
 	CurrentChildIndex = 0;
 }
 
-//bool operator!=(const TArray<UFabiansBehaviourTree*>::TIterator& Lhs, const TCheckedPointerIterator<TArray<UFabiansBehaviourTree*>::ElementType, TArray<UFabiansBehaviourTree*>::SizeType>& End);
 
-EStatus UFabiansActiveSelector::update() //the active selector continuosly monitors its child behaviours and allows for
+EStatus UFabiansActiveSelector::update() //the active selector continuously monitors its child behaviours and allows for
 //dynamic changes in which child is active. Active selector can switch to a higher priority child if conditions change.
 {
 	FBehaviors::TIterator Previous(Children); //Saves the previous active child before updates

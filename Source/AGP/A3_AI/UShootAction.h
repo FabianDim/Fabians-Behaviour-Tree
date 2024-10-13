@@ -5,11 +5,12 @@
 
 #include "CoreMinimal.h"
 #include "FabiansBehaviourTree.h"
+#include "FabiansSequence.h"
 #include "AGP/Characters/EnemyCharacter.h"
 #include "UShootAction.generated.h"
 
 UCLASS()
-class AGP_API UShootAction : public UFabiansBehaviourTree
+class AGP_API UShootAction : public UFabiansFilter
 {
 	GENERATED_BODY()
 

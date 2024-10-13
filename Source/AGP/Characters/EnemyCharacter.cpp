@@ -36,10 +36,10 @@ void AEnemyCharacter::GetTickEngage()
 }
 
 
-void AEnemyCharacter::BeginPlay()
+void AEnemyCharacter::BeginPlay() //build the behaviou r tree here
 {
     Super::BeginPlay();
-	
+
     PathfindingSubsystem = GetWorld()->GetSubsystem<UPathfindingSubsystem>();
     if (!PathfindingSubsystem)
     {
@@ -57,8 +57,8 @@ void AEnemyCharacter::BeginPlay()
     {
         UE_LOG(LogTemp, Error, TEXT("PawnSensingComponent is null"));
     }
-
-    // Create the root behavior tree node as UFabiansActiveSelector
+	//Every time I make a new object I always check that it exists.
+    // Create the root behavior tree node as UFabiansActiveSelector which will actively select the root of the behaviour tree
     BehaviourTreeRoot = NewObject<UFabiansActiveSelector>(this);
     UFabiansActiveSelector* RootSelector = Cast<UFabiansActiveSelector>(BehaviourTreeRoot);
     if (!RootSelector)
@@ -111,6 +111,9 @@ void AEnemyCharacter::BeginPlay()
         return;
     }
     ShootAction->EnemyCharacter = this;
+
+	UFabiansFilter* DetectedCondition = NewObject<UFabiansFilter>(this);
+	
 
     // Add actions to the AttackParallel
     AttackParallel->AddChild(MoveToPlayerAction);

@@ -10,7 +10,8 @@ UFabiansParallel::UFabiansParallel(const FObjectInitializer& ObjectInitializer)
 	// Initialization logic (if any)
 }
 
-EStatus UFabiansParallel::update()
+EStatus UFabiansParallel::update() /*Like other composites, parallels are made up of multiple behaviours but these are
+executed at the same time.*/
 {
 	size_t SuccessCount = 0, FaliureCount = 0;
 	for(auto It : Children)
