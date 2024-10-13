@@ -9,5 +9,5 @@ UFabiansDecorator::UFabiansDecorator(const FObjectInitializer& ObjectInitializer
 
 void UFabiansDecorator::SetChild(UFabiansBehaviourTree* Child)
 {
-	BehaviourTreeChild = Child;
+	BehaviourTreeChild = Child; //Decorators are single child parent nodes. No need to iterate.
 }

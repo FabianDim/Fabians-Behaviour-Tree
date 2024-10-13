@@ -40,14 +40,14 @@ EStatus UFabiansSequence::update()
         // Move to the next child
         ++CurrentChildIndex;
     }
-    return EStatus::Success;
+    return EStatus::Success; //if all succeeds return success else return failure. Opposite of the Selector.
 }
 
 
 /*Filter-------------------------------------------------------------------------------------------Filter*/
 void UFabiansFilter::AddCondition(UFabiansBehaviourTree* Condition)
 {
-	Children.Insert(Condition, 0);
+	Children.Insert(Condition, 0); //eventually would like to fully implement this into the structure
 }
 void UFabiansFilter::AddAction(UFabiansBehaviourTree* Action)
 {

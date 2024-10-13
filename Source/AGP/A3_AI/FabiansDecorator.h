@@ -13,6 +13,7 @@ class AGP_API UFabiansDecorator : public UFabiansBehaviourTree
 	GENERATED_BODY()
 
 protected:
+	UPROPERTY()
 	UFabiansBehaviourTree* BehaviourTreeChild;
 
 public:

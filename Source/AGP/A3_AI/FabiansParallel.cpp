@@ -16,9 +16,9 @@ executed at the same time.*/
 	size_t SuccessCount = 0, FaliureCount = 0;
 	for(auto It : Children)
 	{
-		UFabiansBehaviourTree& b = *It;
+		UFabiansBehaviourTree& b = *It; //for each node in the children array
 		if(!b.IsTerminated()) b.Tick();
-		if(b.GetStatus() == EStatus::Success)
+		if(b.GetStatus() == EStatus::Success) 
 		{
 			++SuccessCount;
 			if(SuccessPolicy == RequireOne)
@@ -32,10 +32,11 @@ executed at the same time.*/
 			if(FailurePolicy == RequireOne)
 			{
 				return EStatus::Failure;
-			}
+			}//adds successes and failures up
 		}
 	}
-	if(FailurePolicy == RequireAll && FaliureCount == Children.Num())
+	if(FailurePolicy == RequireAll && FaliureCount == Children.Num())// if the successes or failures are all or one it
+		//returns the corresponding status
 	{
 		return EStatus::Failure;
 	}
