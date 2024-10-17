@@ -37,6 +37,8 @@ bool UFabiansBehaviourTree::IsTerminated() const
 	return CurrentStatus == EStatus::Success || CurrentStatus == EStatus::Failure;
 }
 
+
+
 bool UFabiansBehaviourTree::IsRunning() const
 {
 	return CurrentStatus == EStatus::Running;

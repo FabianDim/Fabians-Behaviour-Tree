@@ -70,14 +70,14 @@ void AEnemyCharacter::BeginPlay() //build the behaviou r tree here
 	UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
 	UFabiansFilter* EngageFilter = NewObject<UFabiansFilter>(this);
 	UPlayerDetectedCondition* PlayerDetectedCondition = NewObject<UPlayerDetectedCondition>(this);
-	UShootAction* ShootAction = NewObject<UShootAction>(this);
+	//UShootAction* ShootAction = NewObject<UShootAction>(this);
 	UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
-	UFabiansParallel* EngageParallel = NewObject<UFabiansParallel>(this);
+	//UFabiansParallel* EngageParallel = NewObject<UFabiansParallel>(this);
 
-	EngageParallel->AddChild(MoveToPlayerAction);
-	EngageParallel->AddChild(ShootAction);
+	//EngageParallel->AddChild(MoveToPlayerAction);
+	//EngageParallel->AddChild(ShootAction);
 	EngageFilter->AddCondition(PlayerDetectedCondition);
-	EngageFilter->AddAction(EngageParallel);
+	EngageFilter->AddAction(MoveToPlayerAction);
 	EngageSequence->AddChild(EngageFilter);
 
 	RootSelector->AddChild(EngageSequence);

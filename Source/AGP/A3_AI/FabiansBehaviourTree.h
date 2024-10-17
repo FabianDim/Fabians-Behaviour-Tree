@@ -58,10 +58,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category=Behavior)
 	void ChaseTarget();
 
+	/*bool IsCondtion(UFabiansBehaviourTree* Node);*/
 
 private:
 	UPROPERTY(EditAnywhere)
 	UBehaviorTreeComponent* BehaviorComponent;
 
+
+	
 	
 };
