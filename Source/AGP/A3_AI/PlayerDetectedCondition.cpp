@@ -18,4 +18,3 @@ EStatus UPlayerDetectedCondition::update()
 
 	return EnemyCharacter->SensedCharacter ? EStatus::Success : EStatus::Failure;
 }
-

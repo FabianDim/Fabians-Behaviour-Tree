@@ -35,6 +35,8 @@ class AGP_API AEnemyCharacter : public ABaseCharacter
 {
 	GENERATED_BODY()
 
+	friend class UPlayerDetectedCondition;
+	
 public:
 	// Sets default values for this character's properties
 	AEnemyCharacter();

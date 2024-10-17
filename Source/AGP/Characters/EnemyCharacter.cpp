@@ -66,75 +66,21 @@ void AEnemyCharacter::BeginPlay() //build the behaviou r tree here
         UE_LOG(LogTemp, Error, TEXT("Failed to cast BehaviourTreeRoot to UFabiansActiveSelector"));
         return;
     }
-
-    // Create the Engage Sequence
-    UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
-    if (!EngageSequence)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create EngageSequence"));
-        return;
-    }
-
-    // Create the PlayerDetectedCondition
-    UPlayerDetectedCondition* PlayerDetected = NewObject<UPlayerDetectedCondition>(this);
-    if (!PlayerDetected)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create PlayerDetected"));
-        return;
-    }
-    PlayerDetected->EnemyCharacter = this;
-
-    // Create the Attack Parallel node
-    UFabiansParallel* AttackParallel = NewObject<UFabiansParallel>(this);
-    if (!AttackParallel)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create AttackParallel"));
-        return;
-    }
-    AttackParallel->SuccessPolicy = UFabiansParallel::EPolicy::RequireAll;
-    AttackParallel->FailurePolicy = UFabiansParallel::EPolicy::RequireOne;
-
-    // Create the MoveToPlayerAction
-    UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
-    if (!MoveToPlayerAction)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create MoveToPlayerAction"));
-        return;
-    }
-    MoveToPlayerAction->EnemyCharacter = this;
-
-    // Create the ShootAction
-    UShootAction* ShootAction = NewObject<UShootAction>(this);
-    if (!ShootAction)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create ShootAction"));
-        return;
-    }
-    ShootAction->EnemyCharacter = this;
-
-	UFabiansFilter* DetectedCondition = NewObject<UFabiansFilter>(this);
 	
+	UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
+	UFabiansFilter* EngageFilter = NewObject<UFabiansFilter>(this);
+	UPlayerDetectedCondition* PlayerDetectedCondition = NewObject<UPlayerDetectedCondition>(this);
+	UShootAction* ShootAction = NewObject<UShootAction>(this);
+	UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
+	UFabiansParallel* EngageParallel = NewObject<UFabiansParallel>(this);
 
-    // Add actions to the AttackParallel
-    AttackParallel->AddChild(MoveToPlayerAction);
-    AttackParallel->AddChild(ShootAction);
+	EngageParallel->AddChild(MoveToPlayerAction);
+	EngageParallel->AddChild(ShootAction);
+	EngageFilter->AddCondition(PlayerDetectedCondition);
+	EngageFilter->AddAction(EngageParallel);
+	EngageSequence->AddChild(EngageFilter);
 
-    // Build the EngageSequence
-    EngageSequence->AddChild(PlayerDetected);
-    EngageSequence->AddChild(AttackParallel);
-
-    // Create the PatrolAction
-    UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
-    if (!PatrolAction)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create PatrolAction"));
-        return;
-    }
-    PatrolAction->EnemyCharacter = this;
-
-    // Build the behavior tree
-    RootSelector->AddChild(EngageSequence);
-    RootSelector->AddChild(PatrolAction);
+	RootSelector->AddChild(EngageSequence);
 }
 
 
