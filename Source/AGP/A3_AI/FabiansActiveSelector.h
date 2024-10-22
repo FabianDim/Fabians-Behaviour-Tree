@@ -13,7 +13,7 @@ UCLASS()
 class AGP_API UFabiansActiveSelector : public UFabiansSelector
 {
 	GENERATED_BODY()
-
+	friend class UFabiansBehaviourTreeBuilder;
 	virtual void OnInitialise() override;
 	EStatus update() override;
 	

@@ -13,6 +13,8 @@ UCLASS()
 class AGP_API UFabiansCondtion : public UFabiansBehaviourTree
 {
 	GENERATED_BODY()
+
+	friend class UFabiansBehaviourTreeBuilder;
 public:
 	UPROPERTY()
 	bool bNegate = false;

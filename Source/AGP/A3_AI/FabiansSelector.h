@@ -5,7 +5,9 @@
 UCLASS()
 class UFabiansSelector : public UFabiansComposite
 {
-	GENERATED_BODY() 
+	GENERATED_BODY()
+
+	friend class UFabiansBehaviourTreeBuilder;
 public:
 
 protected:	

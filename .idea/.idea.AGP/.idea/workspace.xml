@@ -9,6 +9,12 @@
   <component name="ChangeListManager">
     <list default="true" id="237dfedc-9084-439f-9227-6d6b70761d80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTreeBuilder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTreeBuilder.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTreeBuilder.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTreeBuilder.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansCondtion.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansCondtion.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSelector.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSelector.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +231,7 @@
       <workItem from="1729254307972" duration="4133000" />
       <workItem from="1729307539418" duration="3797000" />
       <workItem from="1729478826965" duration="23606000" />
-      <workItem from="1729555869011" duration="6786000" />
+      <workItem from="1729555869011" duration="14468000" />
     </task>
     <servers />
   </component>

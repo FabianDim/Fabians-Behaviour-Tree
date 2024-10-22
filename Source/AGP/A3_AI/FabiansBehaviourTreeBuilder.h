@@ -20,6 +20,8 @@ class AGP_API UFabiansBehaviourTreeBuilder : public UFabiansBehaviourTree
 	GENERATED_BODY()
 
 	friend class UFabiansComposite;
+	friend class UFabiansBehaviourTree;
+	friend class UFabiansActiveSelector;
 private:
 	UPROPERTY()
 	UFabiansBehaviourTree* Root;
@@ -41,5 +43,12 @@ public:
 	UFabiansBehaviourTree* Build();
 	UFabiansBehaviourTreeBuilder* Filter(TSubclassOf<UFabiansDecorator> DecoratorClass, int32 Parameter);
 
+
+	/*void ActiveSelector();
+	void Sequence();
+	void Action(UFabiansAction* ActionNode);
+	UFabiansBehaviourTree* Build();
 	UFabiansBehaviourTreeBuilder();
+	void Condition(UFabiansCondtion* ConditionNode);*/
+
 };

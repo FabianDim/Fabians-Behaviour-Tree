@@ -6,6 +6,7 @@
 void UFabiansActiveSelector::OnInitialise()
 {
 	CurrentChildIndex = 0;
+	
 }
 
 
