@@ -6,6 +6,7 @@
 #include "HealthComponent.h"
 #include "PlayerCharacter.h"
 #include "AGP/A3_AI/FabiansActiveSelector.h"
+#include "AGP/A3_AI/FabiansBehaviourTreeBuilder.h"
 #include "AGP/A3_AI/FabiansParallel.h"
 #include "AGP/A3_AI/FabiansSelector.h"
 #include "AGP/A3_AI/FabiansSequence.h"
@@ -60,27 +61,28 @@ void AEnemyCharacter::BeginPlay() //build the behaviou r tree here
 	//Every time I make a new object I always check that it exists.
     // Create the root behavior tree node as UFabiansActiveSelector which will actively select the root of the behaviour tree
     BehaviourTreeRoot = NewObject<UFabiansActiveSelector>(this);
-    UFabiansActiveSelector* RootSelector = Cast<UFabiansActiveSelector>(BehaviourTreeRoot);
-    if (!RootSelector)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to cast BehaviourTreeRoot to UFabiansActiveSelector"));
-        return;
-    }
-	
-	UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
-	UFabiansFilter* EngageFilter = NewObject<UFabiansFilter>(this);
-	UPlayerDetectedCondition* PlayerDetectedCondition = NewObject<UPlayerDetectedCondition>(this);
-	//UShootAction* ShootAction = NewObject<UShootAction>(this);
-	UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
-	//UFabiansParallel* EngageParallel = NewObject<UFabiansParallel>(this);
 
-	//EngageParallel->AddChild(MoveToPlayerAction);
-	//EngageParallel->AddChild(ShootAction);
-	EngageFilter->AddCondition(PlayerDetectedCondition);
-	EngageFilter->AddAction(MoveToPlayerAction);
-	EngageSequence->AddChild(EngageFilter);
+	UFabiansBehaviourTreeBuilder* Builder = NewObject<UFabiansBehaviourTreeBuilder>(this);
+	UFabiansCondtion* PlayerDetectedCondition = NewObject<UFabiansCondtion>(this);
+    UShootAction* ShootAction = NewObject<UShootAction>(this);
+	UFabiansFilter* Filter = NewObject<UFabiansFilter>(this);
+    URepeat* Repeat = NewObject<URepeat>(this);
+	UMoveToPlayerAction* MoveTowardsPlayer = NewObject<UMoveToPlayerAction>();
+	UFabiansAction* Action = NewObject<UFabiansAction>(this);
+	UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
 
-	RootSelector->AddChild(EngageSequence);
+	Builder
+	->ActiveSelector()
+		->Sequence()
+			->Condition(PlayerDetectedCondition)
+			->Filter(URepeat::StaticClass(), 3)
+				->Action(Cast<UFabiansAction>(ShootAction))
+		->Action(MoveTowardsPlayer)
+	->Sequence()
+	->Action(Cast<UFabiansAction>(PatrolAction))
+	->End()
+	->Build();
+	UE_LOG(LogTemp, Error, TEXT("I am here"));
 }
 
 
@@ -172,10 +174,11 @@ void AEnemyCharacter::UpdateSight()
 void AEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	if (BehaviourTreeRoot)
+	UFabiansBehaviourTreeBuilder* Builder = NewObject<UFabiansBehaviourTreeBuilder>(this);
+	if (Builder)
 	{
-		BehaviourTreeRoot->Tick();
+		// Tick the root node of the behavior tree
+		Builder->Tick();
 	}
 }
 

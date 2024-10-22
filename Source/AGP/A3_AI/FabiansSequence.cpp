@@ -54,3 +54,8 @@ void UFabiansFilter::AddAction(UFabiansBehaviourTree* Action)
 	Children.Add(Action);
 }
 
+EStatus UFabiansFilter::update()
+{
+    return Super::update();
+}
+

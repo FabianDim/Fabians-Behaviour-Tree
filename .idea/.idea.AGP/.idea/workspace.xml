@@ -9,9 +9,19 @@
   <component name="ChangeListManager">
     <list default="true" id="237dfedc-9084-439f-9227-6d6b70761d80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGP.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/AGP.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansAction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansAction.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansAction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansAction.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansBehaviourTree.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/PlayerDetectedCondition.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/PlayerDetectedCondition.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansCondtion.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansCondtion.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansCondtion.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansCondtion.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansDecorator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +33,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/AGP/UHT/FabiansSelector.gen.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -221,7 +233,11 @@
       <workItem from="1728792088948" duration="14723000" />
       <workItem from="1728998966279" duration="1898000" />
       <workItem from="1729081516481" duration="4639000" />
-      <workItem from="1729158788017" duration="4862000" />
+      <workItem from="1729158788017" duration="4898000" />
+      <workItem from="1729254307972" duration="4133000" />
+      <workItem from="1729307539418" duration="3797000" />
+      <workItem from="1729478826965" duration="23606000" />
+      <workItem from="1729555869011" duration="2258000" />
     </task>
     <servers />
   </component>

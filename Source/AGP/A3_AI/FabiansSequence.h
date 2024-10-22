@@ -32,5 +32,6 @@ class UFabiansFilter : public UFabiansSequence
 public:
 	void AddCondition(UFabiansBehaviourTree* Condition);
 	void AddAction(UFabiansBehaviourTree* Action);
+	virtual EStatus update() override;
 };
 	

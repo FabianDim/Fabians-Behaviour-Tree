@@ -22,4 +22,23 @@ public:
 
 	// Function to set the child, since we can't pass it through the constructor
 	void SetChild(UFabiansBehaviourTree* Child);
+
+	URepeat* Repeat;
+	
+};
+
+UCLASS()
+class URepeat : public UFabiansDecorator
+{
+	GENERATED_BODY()
+
+public:
+
+	EStatus update() override;
+	void SetCount(int count);
+	void OnInitialise() override;
+
+protected:
+	int Limit;
+	int Counter;
 };

@@ -52,7 +52,7 @@ public:
 
 	/*virtual ~AFabiansBehaviourTree();*/
 	virtual void OnInitialise();
-	EStatus Tick();
+	virtual EStatus Tick();
 	EStatus GetStatus() const;
 
 	UFUNCTION(BlueprintCallable, Category=Behavior)

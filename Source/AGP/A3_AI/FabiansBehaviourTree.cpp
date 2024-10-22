@@ -45,6 +45,7 @@ bool UFabiansBehaviourTree::IsRunning() const
 }
 EStatus UFabiansBehaviourTree::Tick()
 {
+	
 	if(CurrentStatus != EStatus::Running) OnInitialise(); /*this on initialise seems like its calling nothing however
 	it is actually allowing subclasses to override the definition and use their own definition for their intended needs
 	this goes for the on terminate as well*/
@@ -61,7 +62,7 @@ EStatus UFabiansBehaviourTree::GetStatus() const
 void UFabiansBehaviourTree::ChaseTarget()
 {
 }
-
+ 
 
 void UFabiansBehaviourTree::Abort()
 {
