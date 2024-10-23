@@ -36,7 +36,7 @@ void AEnemyCharacter::GetTickEngage()
 }
 
 
-void AEnemyCharacter::BeginPlay() //build the behaviou r tree here
+void AEnemyCharacter::BeginPlay() //build the behaviour tree here
 {
     Super::BeginPlay();
 
@@ -84,16 +84,6 @@ void AEnemyCharacter::BeginPlay() //build the behaviou r tree here
     }
     PlayerDetected->EnemyCharacter = this;
 
-    // Create the Attack Parallel node
-    UFabiansParallel* AttackParallel = NewObject<UFabiansParallel>(this);
-    if (!AttackParallel)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create AttackParallel"));
-        return;
-    }
-    AttackParallel->SuccessPolicy = UFabiansParallel::EPolicy::RequireAll;
-    AttackParallel->FailurePolicy = UFabiansParallel::EPolicy::RequireOne;
-
     // Create the MoveToPlayerAction
     UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
     if (!MoveToPlayerAction)
@@ -111,17 +101,13 @@ void AEnemyCharacter::BeginPlay() //build the behaviou r tree here
         return;
     }
     ShootAction->EnemyCharacter = this;
-
-	UFabiansFilter* DetectedCondition = NewObject<UFabiansFilter>(this);
 	
-
-    // Add actions to the AttackParallel
-    AttackParallel->AddChild(MoveToPlayerAction);
-    AttackParallel->AddChild(ShootAction);
 
     // Build the EngageSequence
     EngageSequence->AddChild(PlayerDetected);
-    EngageSequence->AddChild(AttackParallel);
+    EngageSequence->AddChild(MoveToPlayerAction);
+	EngageSequence->AddChild(ShootAction);
+	
 
     // Create the PatrolAction
     UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
