@@ -3,6 +3,8 @@
 
 #include "PatrolAction.h"
 
+#include "PlayerDetectedCondition.h"
+
 UPatrolAction::UPatrolAction(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
@@ -13,8 +15,8 @@ UPatrolAction::UPatrolAction(const FObjectInitializer& ObjectInitializer)
 
 EStatus UPatrolAction::update()
 {
-	PlayerCharacter =  EnemyCharacter->FindPlayer();
-	if(!PlayerCharacter || !EnemyCharacter)
+	
+	if(PlayerNotDetectedCondition->update() == EStatus::Success)
 	{
 		EnemyCharacter->TickPatrol();
 		return EStatus::Running;

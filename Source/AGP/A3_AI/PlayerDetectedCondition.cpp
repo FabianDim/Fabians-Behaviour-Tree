@@ -18,7 +18,7 @@ EStatus UPlayerDetectedCondition::update()
 	{
 		return EStatus::Failure;
 	}
-	return PlayerCharacter ? EStatus::Success : EStatus::Failure;
+	return PlayerCharacter ? EStatus::Success : EStatus::Failure;//if we find the player using the find player method we return the estatus to use in the other class
 }
 
 UPlayerNotDetectedCondition::UPlayerNotDetectedCondition(): EnemyCharacter(nullptr), PlayerCharacter(nullptr)

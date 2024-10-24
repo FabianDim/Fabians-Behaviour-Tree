@@ -37,6 +37,8 @@ class AGP_API AEnemyCharacter : public ABaseCharacter
 
 	friend class UPatrolAction;
 	friend class UMoveToPlayerAction;
+	friend class UPlayerDetectedCondition;
+	friend class UPlayerNotDetectedCondition;
 public:
 	// Sets default values for this character's properties
 	AEnemyCharacter();
