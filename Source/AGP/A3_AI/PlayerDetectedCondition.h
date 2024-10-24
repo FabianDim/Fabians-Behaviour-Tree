@@ -12,7 +12,7 @@
  * 
  */
 UCLASS()
-class AGP_API UPlayerDetectedCondition : public UFabiansFilter
+class AGP_API UPlayerDetectedCondition : public UFabiansSequence
 {
 	GENERATED_BODY()
 
@@ -23,5 +23,24 @@ public:
 
 	UPROPERTY()
 	AEnemyCharacter* EnemyCharacter;
+	UPROPERTY()
+	APlayerCharacter* PlayerCharacter;
+	
+};
+
+UCLASS()
+class UPlayerNotDetectedCondition : public UFabiansSequence
+{
+	GENERATED_BODY()
+
+public:
+	UPlayerNotDetectedCondition();
+
+	virtual EStatus update() override;
+
+	UPROPERTY()
+	AEnemyCharacter* EnemyCharacter;
+	UPROPERTY()
+	APlayerCharacter* PlayerCharacter;
 	
 };

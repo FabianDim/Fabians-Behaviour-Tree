@@ -12,6 +12,8 @@
 /**
  * 
  */
+
+class UPlayerNotDetectedCondition;
 UCLASS()
 class AGP_API UPatrolAction : public UFabiansSequence
 {
@@ -29,4 +31,7 @@ public:
 	
 protected:
 	EStatus CurrentStatus;
+
+	UPROPERTY()
+	UPlayerNotDetectedCondition* PlayerNotDetectedCondition;
 };
