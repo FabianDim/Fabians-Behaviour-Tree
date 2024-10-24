@@ -7,15 +7,18 @@ UPatrolAction::UPatrolAction(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
 	EnemyCharacter = nullptr;
+	PlayerCharacter = nullptr;
 	CurrentStatus = EStatus::Invalid;
 }
 
 EStatus UPatrolAction::update()
 {
-	if(!EnemyCharacter)
+	PlayerCharacter =  EnemyCharacter->FindPlayer();
+	if(!PlayerCharacter || !EnemyCharacter)
 	{
-		return EStatus::Failure;
+		EnemyCharacter->TickPatrol();
+		return EStatus::Running;
 	}
-	EnemyCharacter->GetTickPatrol();
-	return EStatus::Running;
+	return EStatus::Failure;
+	
 }

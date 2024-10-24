@@ -11,11 +11,11 @@ UMoveToPlayerAction::UMoveToPlayerAction()
 
 EStatus UMoveToPlayerAction::update()
 {
-	if (!EnemyCharacter || !EnemyCharacter->SensedCharacter)
+	PlayerCharacter =  EnemyCharacter->FindPlayer();
+	if(!PlayerCharacter || !EnemyCharacter)
 	{
 		return EStatus::Failure;
 	}
-
 	// Implement movementtowards player logic 
 	EnemyCharacter->GetTickEngage();
 

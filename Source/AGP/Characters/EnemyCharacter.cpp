@@ -74,6 +74,12 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
         UE_LOG(LogTemp, Error, TEXT("Failed to create EngageSequence"));
         return;
     }
+	UFabiansSequence* NonEngageSequence = NewObject<UFabiansSequence>(this);
+	if (!NonEngageSequence)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create EngageSequence"));
+		return;
+	}
 
     // Create the PlayerDetectedCondition
     UPlayerDetectedCondition* PlayerDetected = NewObject<UPlayerDetectedCondition>(this);
@@ -104,11 +110,10 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
 	
 
     // Build the EngageSequence
-    EngageSequence->AddChild(PlayerDetected);
+    /*EngageSequence->AddChild(PlayerDetected);*/
     EngageSequence->AddChild(MoveToPlayerAction);
 	EngageSequence->AddChild(ShootAction);
 	
-
     // Create the PatrolAction
     UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
     if (!PatrolAction)
@@ -118,9 +123,13 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
     }
     PatrolAction->EnemyCharacter = this;
 
+	
+	NonEngageSequence->AddChild(PatrolAction);
     // Build the behavior tree
+	
+	RootSelector->AddChild(NonEngageSequence);
     RootSelector->AddChild(EngageSequence);
-    RootSelector->AddChild(PatrolAction);
+    
 }
 
 
@@ -231,6 +240,10 @@ APlayerCharacter* AEnemyCharacter::FindPlayer() const
 	APlayerCharacter* Player = nullptr;
 	for (TActorIterator<APlayerCharacter> It(GetWorld()); It; ++It)
 	{
+		if(!It)
+		{
+			return nullptr;
+		}
 		Player = *It;
 		break;
 	}

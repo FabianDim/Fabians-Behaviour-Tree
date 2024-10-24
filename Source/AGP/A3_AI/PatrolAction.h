@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "FabiansBehaviourTree.h"
 #include "FabiansDecorator.h"
+#include "FabiansSequence.h"
 #include "AGP/Characters/EnemyCharacter.h"
 #include "PatrolAction.generated.h"
 
@@ -12,10 +13,9 @@
  * 
  */
 UCLASS()
-class AGP_API UPatrolAction : public UFabiansDecorator
+class AGP_API UPatrolAction : public UFabiansSequence
 {
 	GENERATED_BODY()
-
 public:
 	// Constructor with FObjectInitializer
 	UPatrolAction(const FObjectInitializer& ObjectInitializer);
@@ -24,6 +24,8 @@ public:
 
 	UPROPERTY()
 	AEnemyCharacter* EnemyCharacter;
+	UPROPERTY()
+	APlayerCharacter* PlayerCharacter;
 	
 protected:
 	EStatus CurrentStatus;

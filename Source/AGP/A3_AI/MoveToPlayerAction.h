@@ -9,7 +9,7 @@
 #include "MoveToPlayerAction.generated.h"
 
 UCLASS()
-class AGP_API UMoveToPlayerAction : public UFabiansFilter
+class AGP_API UMoveToPlayerAction : public UFabiansSequence
 {
 	GENERATED_BODY()
 
@@ -20,4 +20,5 @@ public:
 
 	UPROPERTY()
 	AEnemyCharacter* EnemyCharacter;
+	APlayerCharacter* PlayerCharacter;
 };
