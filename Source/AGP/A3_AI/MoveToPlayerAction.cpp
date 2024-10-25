@@ -1,6 +1,9 @@
 // MoveToPlayerAction.cpp
 
 #include "MoveToPlayerAction.h"
+#include "MoveToPlayerAction.h"
+
+#include "PlayerDetectedCondition.h"
 #include "AGP/Characters/EnemyCharacter.h"
 
 UMoveToPlayerAction::UMoveToPlayerAction()
@@ -11,13 +14,10 @@ UMoveToPlayerAction::UMoveToPlayerAction()
 
 EStatus UMoveToPlayerAction::update()
 {
-	PlayerCharacter =  EnemyCharacter->FindPlayer();
-	if(!PlayerCharacter || !EnemyCharacter)
+	if(PlayerDetectedCondition->update() == EStatus::Success)
 	{
-		return EStatus::Failure;
+		EnemyCharacter->TickEngage();
+		return EStatus::Running;
 	}
-	// Implement movementtowards player logic 
-	EnemyCharacter->GetTickEngage();
-
-	return EStatus::Running;
+	return EStatus::Failure;
 }

@@ -107,12 +107,8 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
         return;
     }
     ShootAction->EnemyCharacter = this;
-	
 
-    // Build the EngageSequence
-    /*EngageSequence->AddChild(PlayerDetected);*/
-    EngageSequence->AddChild(MoveToPlayerAction);
-	EngageSequence->AddChild(ShootAction);
+	
 	
     // Create the PatrolAction
     UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
@@ -124,11 +120,8 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
     PatrolAction->EnemyCharacter = this;
 
 	
-	NonEngageSequence->AddChild(PatrolAction);
-    // Build the behavior tree
-	
-	RootSelector->AddChild(NonEngageSequence);
-    RootSelector->AddChild(EngageSequence);
+	//RootSelector->AddChild(NonEngageSequence);
+    //RootSelector->AddChild(EngageSequence);
     
 }
 

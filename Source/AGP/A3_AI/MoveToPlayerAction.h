@@ -12,7 +12,7 @@ UCLASS()
 class AGP_API UMoveToPlayerAction : public UFabiansSequence
 {
 	GENERATED_BODY()
-
+	class UPlayerNotDetectedCondition;
 public:
 	UMoveToPlayerAction();
 
@@ -21,4 +21,8 @@ public:
 	UPROPERTY()
 	AEnemyCharacter* EnemyCharacter;
 	APlayerCharacter* PlayerCharacter;
+
+protected:
+	UPROPERTY()
+	UPlayerDetectedCondition* PlayerDetectedCondition;
 };

@@ -16,6 +16,7 @@ class AGP_API UPlayerDetectedCondition : public UFabiansSequence
 {
 	GENERATED_BODY()
 
+	friend class UMoveToPlayerAction;
 public:
 	UPlayerDetectedCondition();
 
