@@ -12,13 +12,13 @@ UPlayerDetectedCondition::UPlayerDetectedCondition()
 
 EStatus UPlayerDetectedCondition::update()
 {
-	PlayerCharacter = EnemyCharacter->FindPlayer();
-	
 	if (!EnemyCharacter)
 	{
 		return EStatus::Failure;
 	}
-	return PlayerCharacter ? EStatus::Success : EStatus::Failure;//if we find the player using the find player method we return the estatus to use in the other class
+
+	PlayerCharacter = EnemyCharacter->FindPlayer();
+	return PlayerCharacter ? EStatus::Success : EStatus::Failure;
 }
 
 UPlayerNotDetectedCondition::UPlayerNotDetectedCondition(): EnemyCharacter(nullptr), PlayerCharacter(nullptr)
@@ -27,12 +27,11 @@ UPlayerNotDetectedCondition::UPlayerNotDetectedCondition(): EnemyCharacter(nullp
 
 EStatus UPlayerNotDetectedCondition::update()
 {
-	PlayerCharacter = EnemyCharacter->FindPlayer();
-	
 	if (!EnemyCharacter)
 	{
 		return EStatus::Failure;
 	}
+
+	PlayerCharacter = EnemyCharacter->FindPlayer();
 	return PlayerCharacter ? EStatus::Failure : EStatus::Success;
 }
-

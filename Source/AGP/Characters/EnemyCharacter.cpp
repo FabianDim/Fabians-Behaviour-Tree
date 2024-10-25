@@ -51,7 +51,7 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
 	
     if (PawnSensingComponent)
     {
-        PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn);
+        PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn); 
     }
     else
     {
@@ -59,8 +59,8 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
     }
 	//Every time I make a new object I always check that it exists.
     // Create the root behavior tree node as UFabiansActiveSelector which will actively select the root of the behaviour tree
-    BehaviourTreeRoot = NewObject<UFabiansActiveSelector>(this);
-    UFabiansActiveSelector* RootSelector = Cast<UFabiansActiveSelector>(BehaviourTreeRoot);
+    BehaviourTreeRoot = NewObject<UFabiansSelector>(this);
+    UFabiansSelector* RootSelector = Cast<UFabiansSelector>(BehaviourTreeRoot);
     if (!RootSelector)
     {
         UE_LOG(LogTemp, Error, TEXT("Failed to cast BehaviourTreeRoot to UFabiansActiveSelector"));
@@ -98,17 +98,6 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
         return;
     }
     MoveToPlayerAction->EnemyCharacter = this;
-
-    // Create the ShootAction
-    UShootAction* ShootAction = NewObject<UShootAction>(this);
-    if (!ShootAction)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create ShootAction"));
-        return;
-    }
-    ShootAction->EnemyCharacter = this;
-
-	
 	
     // Create the PatrolAction
     UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
@@ -119,9 +108,13 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
     }
     PatrolAction->EnemyCharacter = this;
 
+	//build the tree
+
+	NonEngageSequence->AddChild(PatrolAction);
+	EngageSequence->AddChild(MoveToPlayerAction);
 	
-	//RootSelector->AddChild(NonEngageSequence);
-    //RootSelector->AddChild(EngageSequence);
+	RootSelector->AddChild(NonEngageSequence);
+    RootSelector->AddChild(EngageSequence);
     
 }
 

@@ -10,8 +10,9 @@
     <list default="true" id="237dfedc-9084-439f-9227-6d6b70761d80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/PlayerDetectedCondition.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/PlayerDetectedCondition.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/PatrolAction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/PatrolAction.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/PlayerDetectedCondition.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/PlayerDetectedCondition.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,16 +23,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/AGP/UHT/FabiansSelector.gen.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -229,7 +220,7 @@
       <workItem from="1728632028583" duration="3481000" />
       <workItem from="1728792088948" duration="14723000" />
       <workItem from="1729759010272" duration="7907000" />
-      <workItem from="1729846641970" duration="1115000" />
+      <workItem from="1729846641970" duration="6206000" />
     </task>
     <servers />
   </component>

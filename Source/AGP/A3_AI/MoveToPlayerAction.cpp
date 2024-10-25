@@ -14,7 +14,8 @@ UMoveToPlayerAction::UMoveToPlayerAction()
 
 EStatus UMoveToPlayerAction::update()
 {
-	if(PlayerDetectedCondition->update() == EStatus::Success)
+	
+	if(PlayerDetectedCondition && PlayerDetectedCondition->update() == EStatus::Success)
 	{
 		EnemyCharacter->TickEngage();
 		return EStatus::Running;

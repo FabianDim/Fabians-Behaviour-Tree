@@ -16,7 +16,7 @@ UPatrolAction::UPatrolAction(const FObjectInitializer& ObjectInitializer)
 EStatus UPatrolAction::update()
 {
 	
-	if(PlayerNotDetectedCondition->update() == EStatus::Success)
+	if(PlayerNotDetectedCondition && PlayerNotDetectedCondition->update() == EStatus::Success)
 	{
 		EnemyCharacter->TickPatrol();
 		return EStatus::Running;
