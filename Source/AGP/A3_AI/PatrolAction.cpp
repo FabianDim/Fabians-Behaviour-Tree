@@ -3,6 +3,7 @@
 
 #include "PatrolAction.h"
 
+#include "MoveToPlayerAction.h"
 #include "PlayerDetectedCondition.h"
 
 UPatrolAction::UPatrolAction(const FObjectInitializer& ObjectInitializer)
@@ -15,10 +16,10 @@ UPatrolAction::UPatrolAction(const FObjectInitializer& ObjectInitializer)
 
 EStatus UPatrolAction::update()
 {
-	
 	if(PlayerNotDetectedCondition && PlayerNotDetectedCondition->update() == EStatus::Success)
 	{
 		EnemyCharacter->TickPatrol();
+		UE_LOG(LogTemp, Error, TEXT("Patrol Action is Running"));
 		return EStatus::Running;
 	}
 	return EStatus::Failure;

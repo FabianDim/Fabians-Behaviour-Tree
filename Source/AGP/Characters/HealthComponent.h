@@ -10,6 +10,9 @@
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class AGP_API UHealthComponent : public UActorComponent
 {
+
+	friend class HealthCondition;
+	
 	GENERATED_BODY()
 
 public:	

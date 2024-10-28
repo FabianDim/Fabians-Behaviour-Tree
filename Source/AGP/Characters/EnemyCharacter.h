@@ -39,6 +39,8 @@ class AGP_API AEnemyCharacter : public ABaseCharacter
 	friend class UMoveToPlayerAction;
 	friend class UPlayerDetectedCondition;
 	friend class UPlayerNotDetectedCondition;
+	friend class UEvadeAction;
+	friend class UHealthCondition;
 public:
 	// Sets default values for this character's properties
 	AEnemyCharacter();
@@ -138,4 +140,9 @@ private:
 
 	UPROPERTY()
 	UFabiansBehaviourTree* BehaviourTreeRoot;
+	UPROPERTY()
+	UPlayerDetectedCondition* PlayerDetectedCondition;
+	UPROPERTY()
+	UPlayerNotDetectedCondition* PlayerNotDetectedCondition;
+	
 };

@@ -17,6 +17,9 @@ class UPlayerNotDetectedCondition;
 UCLASS()
 class AGP_API UPatrolAction : public UFabiansSequence
 {
+
+	friend class AEnemyCharacter;
+	friend class UMoveToPlayerAction;
 	GENERATED_BODY()
 public:
 	// Constructor with FObjectInitializer
@@ -34,4 +37,6 @@ protected:
 
 	UPROPERTY()
 	UPlayerNotDetectedCondition* PlayerNotDetectedCondition;
+	UPROPERTY()
+	UMoveToPlayerAction* MoveToPlayerAction;
 };

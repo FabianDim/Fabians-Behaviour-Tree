@@ -11,6 +11,9 @@
 UCLASS()
 class AGP_API UMoveToPlayerAction : public UFabiansSequence
 {
+
+	friend class AEnemyCharacter;
+	friend class UPatrolAction;
 	GENERATED_BODY()
 	class UPlayerNotDetectedCondition;
 public:

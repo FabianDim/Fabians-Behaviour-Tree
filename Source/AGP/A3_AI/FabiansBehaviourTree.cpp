@@ -60,7 +60,6 @@ void UFabiansBehaviourTree::ChaseTarget()
 {
 }
 
-
 void UFabiansBehaviourTree::Abort()
 {
 	OnTerminate(EStatus::Aborted);

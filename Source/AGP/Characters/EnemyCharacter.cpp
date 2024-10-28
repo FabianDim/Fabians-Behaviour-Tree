@@ -5,6 +5,7 @@
 #include "EngineUtils.h"
 #include "HealthComponent.h"
 #include "PlayerCharacter.h"
+#include "AGP/A3_AI/EvadeAction.h"
 #include "AGP/A3_AI/FabiansActiveSelector.h"
 #include "AGP/A3_AI/FabiansParallel.h"
 #include "AGP/A3_AI/FabiansSelector.h"
@@ -59,7 +60,7 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
     }
 	//Every time I make a new object I always check that it exists.
     // Create the root behavior tree node as UFabiansActiveSelector which will actively select the root of the behaviour tree
-    BehaviourTreeRoot = NewObject<UFabiansSelector>(this);
+    BehaviourTreeRoot = NewObject<UFabiansActiveSelector>(this);
     UFabiansSelector* RootSelector = Cast<UFabiansSelector>(BehaviourTreeRoot);
     if (!RootSelector)
     {
@@ -91,30 +92,49 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
     PlayerDetected->EnemyCharacter = this;
 
     // Create the MoveToPlayerAction
-    UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
-    if (!MoveToPlayerAction)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create MoveToPlayerAction"));
-        return;
-    }
-    MoveToPlayerAction->EnemyCharacter = this;
-	
-    // Create the PatrolAction
-    UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
-    if (!PatrolAction)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create PatrolAction"));
-        return;
-    }
-    PatrolAction->EnemyCharacter = this;
+	UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
+	if (!MoveToPlayerAction)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create MoveToPlayerAction"));
+		return;
+	}
+	MoveToPlayerAction->EnemyCharacter = this;
+	MoveToPlayerAction->PlayerDetectedCondition = PlayerDetected; // Explicit linking
 
+	// Create the PatrolAction and link PlayerDetectedCondition or PlayerNotDetectedCondition if inverse
+	UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
+	if (!PatrolAction)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create PatrolAction"));
+		return;
+	}
+	PatrolAction->EnemyCharacter = this;
+	PatrolAction->PlayerNotDetectedCondition = Cast<UPlayerNotDetectedCondition>(PlayerDetected);
 	//build the tree
+
+	UEvadeAction* EvadeAction = NewObject<UEvadeAction>(this);
+	if (!EvadeAction)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create EvadeAction"));
+		return;
+	}
+	EvadeAction->EnemyCharacter = this;
+	EvadeAction->HealthCondition;
+	
+	UFabiansSequence* EvadeSequence = NewObject<UFabiansSequence>(this);
+	if (!EvadeSequence)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create EvadeSequence"));
+		return;
+	}
 
 	NonEngageSequence->AddChild(PatrolAction);
 	EngageSequence->AddChild(MoveToPlayerAction);
+	EvadeSequence->AddChild(EvadeAction);
 	
 	RootSelector->AddChild(NonEngageSequence);
     RootSelector->AddChild(EngageSequence);
+	RootSelector->AddChild(EvadeSequence);
     
 }
 
