@@ -6,18 +6,21 @@ void UFabiansSelector::OnInitialise()
 
 EStatus UFabiansSelector::update()
 {
-	for (FBehaviors::TIterator It(Children); It; ++It)
+	while(true)
 	{
-		// Use the iterator to call Tick() on each child
-		EStatus Status = (*It)->Tick();
-
-		if (Status != EStatus::Failure)
+		for (FBehaviors::TIterator It(Children); It; ++It)
 		{
-			return Status; // Return if the child status is not Failure
+			// Use the iterator to call Tick() on each child
+			EStatus Status = (*It)->Tick();
+
+			if (Status != EStatus::Failure)
+			{
+				return Status; // Return if the child status is not Failure
+			}
 		}
+		// If all children fail, return Failure
+		return EStatus::Failure;	
 	}
-	// If all children fail, return Failure
-	return EStatus::Failure;
 }
 
 UFabiansSelector::UFabiansSelector() : CurrentChildIndex(0)
