@@ -1,20 +1,21 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// FabiansActiveSelector.h
 
 #pragma once
 
 #include "CoreMinimal.h"
-#include "FabiansSelector.h"
+#include "FabiansComposite.h"
 #include "FabiansActiveSelector.generated.h"
 
-/**
- * 
- */
 UCLASS()
-class AGP_API UFabiansActiveSelector : public UFabiansSelector
+class AGP_API UFabiansActiveSelector : public UFabiansComposite
 {
 	GENERATED_BODY()
 
+protected:
 	virtual void OnInitialise() override;
-	EStatus update() override;
-	
+	virtual EStatus update() override;
+
+private:
+	int32 CurrentChildIndex;
+	int32 LastRunningChildIndex;
 };

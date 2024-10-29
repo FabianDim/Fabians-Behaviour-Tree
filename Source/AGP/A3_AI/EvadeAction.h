@@ -17,6 +17,8 @@ class AGP_API UEvadeAction : public UFabiansSequence
 friend class AEnemyCharacter;
 public:
 	virtual EStatus update() override;
+	UPROPERTY()
+	UPlayerDetectedCondition* PlayerDetected;
 
 protected:
 	UPROPERTY()
@@ -24,5 +26,7 @@ protected:
 
 	UPROPERTY()
 	UHealthCondition* HealthCondition;
+
+	
 	
 };

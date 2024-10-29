@@ -16,7 +16,8 @@ public:
 
 	UPROPERTY()
 	class AEnemyCharacter* EnemyCharacter;
+	void SetHealthThreshold(float Threshold) { HealthThreshold = Threshold; }
 
 private:
-	const float HealthThreshold = 40.0f; // Set your desired threshold here
+	float HealthThreshold = 40.0f; // Set your desired threshold here
 };

@@ -61,23 +61,47 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
     }
 	//Every time I make a new object I always check that it exists.
     // Create the root behavior tree node as UFabiansActiveSelector which will actively select the root of the behaviour tree
-    BehaviourTreeRoot = NewObject<UFabiansActiveSelector>(this);
-
-    // Create the Engage Sequence
-    UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
-    if (!EngageSequence)
+	    BehaviourTreeRoot = NewObject<UFabiansActiveSelector>(this);
+    if (!BehaviourTreeRoot)
     {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create EngageSequence"));
+        UE_LOG(LogTemp, Error, TEXT("Failed to create BehaviourTreeRoot as UFabiansActiveSelector"));
         return;
     }
-	UFabiansSequence* NonEngageSequence = NewObject<UFabiansSequence>(this);
-	if (!NonEngageSequence)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create EngageSequence"));
-		return;
-	}
+    UFabiansActiveSelector* RootSelector = Cast<UFabiansActiveSelector>(BehaviourTreeRoot);
+    if (!RootSelector)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to cast BehaviourTreeRoot to UFabiansActiveSelector"));
+        return;
+    }
 
-    // Create the PlayerDetectedCondition
+    // Create sequences
+    UFabiansSequence* EvadeSequence = NewObject<UFabiansSequence>(this);
+    UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
+    UFabiansSequence* PatrolSequence = NewObject<UFabiansSequence>(this);
+
+    if (!EvadeSequence || !EngageSequence || !PatrolSequence)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create one of the sequences"));
+        return;
+    }
+
+    // Create conditions and actions
+    UHealthCondition* HealthCondition = NewObject<UHealthCondition>(this);
+    if (!HealthCondition)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create HealthCondition"));
+        return;
+    }
+    HealthCondition->EnemyCharacter = this;
+	HealthCondition->SetHealthThreshold(40.0f);
+    UEvadeAction* EvadeAction = NewObject<UEvadeAction>(this);
+    if (!EvadeAction)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create EvadeAction"));
+        return;
+    }
+    EvadeAction->EnemyCharacter = this;
+
     UPlayerDetectedCondition* PlayerDetected = NewObject<UPlayerDetectedCondition>(this);
     if (!PlayerDetected)
     {
@@ -86,89 +110,47 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
     }
     PlayerDetected->EnemyCharacter = this;
 
-    // Create the MoveToPlayerAction
-	UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
-	if (!MoveToPlayerAction)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create MoveToPlayerAction"));
-		return;
-	}
-	MoveToPlayerAction->EnemyCharacter = this;
-	MoveToPlayerAction->PlayerDetectedCondition = PlayerDetected; // Explicit linking
+    UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
+    if (!MoveToPlayerAction)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create MoveToPlayerAction"));
+        return;
+    }
+    MoveToPlayerAction->EnemyCharacter = this;
 
-	// Create the PatrolAction and link PlayerDetectedCondition or PlayerNotDetectedCondition if inverse
-	UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
-	if (!PatrolAction)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create PatrolAction"));
-		return;
-	}
-	PatrolAction->EnemyCharacter = this;
-	PatrolAction->PlayerNotDetectedCondition = Cast<UPlayerNotDetectedCondition>(PlayerDetected);
-	//build the tree
+    UPlayerNotDetectedCondition* PlayerNotDetected = NewObject<UPlayerNotDetectedCondition>(this);
+    if (!PlayerNotDetected)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create PlayerNotDetected"));
+        return;
+    }
+    PlayerNotDetected->EnemyCharacter = this;
 
-	UEvadeAction* EvadeAction = NewObject<UEvadeAction>(this);
-	if (!EvadeAction)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create EvadeAction"));
-		return;
-	}
-	EvadeAction->EnemyCharacter = this;
-	EvadeAction->HealthCondition;
-	
-	UFabiansSequence* EvadeSequence = NewObject<UFabiansSequence>(this);
-	if (!EvadeSequence)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create EvadeSequence"));
-		return;
-	}
+    UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
+    if (!PatrolAction)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to create PatrolAction"));
+        return;
+    }
+    PatrolAction->EnemyCharacter = this;
 
-	UPlayerNotDetectedCondition* PlayerNotDetected = NewObject<UPlayerNotDetectedCondition>(this);
-	if (!PlayerNotDetected)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create PlayerNotDetected"));
-		return;
-	}
-	PlayerNotDetected->EnemyCharacter = this;
+    // Build sequences
+    EvadeSequence->AddChild(HealthCondition);
+    EvadeSequence->AddChild(EvadeAction);
 
-	// Assign to PatrolAction
-	PatrolAction->PlayerNotDetectedCondition = PlayerNotDetected;
+    EngageSequence->AddChild(PlayerDetected);
+    EngageSequence->AddChild(MoveToPlayerAction);
 
-	UHealthCondition* HealthCondition = NewObject<UHealthCondition>(this);
-	if (!HealthCondition)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create HealthCondition"));
-		return;
-	}
-	EvadeAction->HealthCondition = HealthCondition;
+    PatrolSequence->AddChild(PlayerNotDetected);
+    PatrolSequence->AddChild(PatrolAction);
 
-	UFabiansSequence* PatrolSequence = NewObject<UFabiansSequence>(this);
-	if (!PatrolSequence)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create PatrolSequence"));
-		return;
-	}
-	EvadeSequence->AddChild(HealthCondition);
-	EvadeSequence->AddChild(EvadeAction);
-
-	EngageSequence->AddChild(PlayerDetected);
-	EngageSequence->AddChild(MoveToPlayerAction);
-
-	PatrolSequence->AddChild(PlayerNotDetectedCondition);
-	PatrolSequence->AddChild(PatrolAction);
-
-	// Add sequences to root selector
-	UFabiansActiveSelector* RootSelector = Cast<UFabiansActiveSelector>(BehaviourTreeRoot);
-	if (!RootSelector)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to cast BehaviourTreeRoot to UFabiansActiveSelector"));
-		return;
-	}
-
-	RootSelector->AddChild(EvadeSequence);
-	RootSelector->AddChild(EngageSequence);
-	RootSelector->AddChild(PatrolSequence);
-    
+    // Add sequences to root selector
+    RootSelector->AddChild(EvadeSequence);
+    UE_LOG(LogTemp, Error, TEXT("Adding Evade Sequence"));
+    RootSelector->AddChild(EngageSequence);
+    UE_LOG(LogTemp, Error, TEXT("Adding Engage Sequence"));
+    RootSelector->AddChild(PatrolSequence);
+    UE_LOG(LogTemp, Error, TEXT("Adding Patrol Sequence"));
 }
 
 

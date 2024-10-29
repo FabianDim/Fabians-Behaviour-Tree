@@ -7,7 +7,6 @@
 
 void UFabiansSequence::OnInitialise()
 {
-    // Only reset if the status is not Running
     if (CurrentStatus != EStatus::Running)
     {
         CurrentChildIndex = 0;
@@ -19,7 +18,6 @@ EStatus UFabiansSequence::update()
     while (CurrentChildIndex < Children.Num())
     {
         UFabiansBehaviourTree* CurrentChild = Children[CurrentChildIndex];
-
         if (!CurrentChild)
         {
             UE_LOG(LogTemp, Error, TEXT("Null child in sequence at index %d"), CurrentChildIndex);
@@ -47,6 +45,7 @@ EStatus UFabiansSequence::update()
     CurrentStatus = EStatus::Success;
     return EStatus::Success;
 }
+
 
 
 /*Filter-------------------------------------------------------------------------------------------Filter*/

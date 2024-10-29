@@ -38,5 +38,7 @@ protected:
 	UPROPERTY()
 	UPlayerNotDetectedCondition* PlayerNotDetectedCondition;
 	UPROPERTY()
+	UPlayerDetectedCondition* PlayerDetected;
+	UPROPERTY()
 	UMoveToPlayerAction* MoveToPlayerAction;
 };

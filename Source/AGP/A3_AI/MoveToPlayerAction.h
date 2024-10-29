@@ -23,6 +23,7 @@ public:
 
 	UPROPERTY()
 	AEnemyCharacter* EnemyCharacter;
+	UPROPERTY()
 	APlayerCharacter* PlayerCharacter;
 
 protected:

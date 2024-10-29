@@ -15,7 +15,6 @@ class AGP_API UFabiansComposite : public UFabiansBehaviourTree
 	GENERATED_BODY()
 
 public:
-	
 	void AddChild(UFabiansBehaviourTree* Child);
 	void RemoveChild(UFabiansBehaviourTree*);
 	void ClearChildren();

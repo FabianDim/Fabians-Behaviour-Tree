@@ -9,6 +9,6 @@ EStatus UEvadeAction::update()
 {
 	EnemyCharacter->TickEvade();
 	UE_LOG(LogTemp, Error, TEXT("Evade Action is Running"));
-	return EStatus::Running;
+	return EStatus::Running; // Return Running to indicate ongoing action
 }
 
