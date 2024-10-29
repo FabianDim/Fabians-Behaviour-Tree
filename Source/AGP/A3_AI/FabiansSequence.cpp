@@ -7,8 +7,11 @@
 
 void UFabiansSequence::OnInitialise()
 {
-	CurrentChildIndex = 0;
-	
+    // Only reset if the status is not Running
+    if (CurrentStatus != EStatus::Running)
+    {
+        CurrentChildIndex = 0;
+    }
 }
 
 EStatus UFabiansSequence::update()
@@ -21,26 +24,28 @@ EStatus UFabiansSequence::update()
         {
             UE_LOG(LogTemp, Error, TEXT("Null child in sequence at index %d"), CurrentChildIndex);
             ++CurrentChildIndex;
-            CurrentChild = Children[CurrentChildIndex];
             continue;
         }
-        
+
         EStatus Status = CurrentChild->Tick();
 
         if (Status == EStatus::Running)
         {
+            CurrentStatus = EStatus::Running;
             return EStatus::Running;
         }
 
         if (Status == EStatus::Failure)
         {
+            CurrentStatus = EStatus::Failure;
             return EStatus::Failure;
         }
 
         // Move to the next child
         ++CurrentChildIndex;
     }
-    return EStatus::Success; //if all succeeds return success else return failure. Opposite of the Selector.
+    CurrentStatus = EStatus::Success;
+    return EStatus::Success;
 }
 
 

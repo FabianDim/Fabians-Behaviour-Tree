@@ -1,19 +1,22 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "HealthCondition.h"
+#include "AGP/Characters/EnemyCharacter.h"
+#include "AGP/Characters/HealthComponent.h"
+
+UHealthCondition::UHealthCondition()
+	: EnemyCharacter(nullptr)
+{
+}
 
 EStatus UHealthCondition::update()
 {
-	if(HealthComponent && EnemyCharacter && EnemyCharacter->HealthComponent->GetCurrentHealthPercentage() < 40)
+	if (EnemyCharacter && EnemyCharacter->HealthComponent)
 	{
-		UE_LOG(LogTemp, Error, TEXT("I am reaching the health condition"));
-		return EStatus::Success;
-		
+		float CurrentHealthPercentage = EnemyCharacter->HealthComponent->GetCurrentHealthPercentage();
+		if (CurrentHealthPercentage < HealthThreshold)
+		{
+			UE_LOG(LogTemp, Error, TEXT("HealthCondition succeeded: Health is %f%%"), CurrentHealthPercentage);
+			return EStatus::Success;
+		}
 	}
 	return EStatus::Failure;
-}
-
-UHealthCondition::UHealthCondition(): EnemyCharacter(nullptr), HealthComponent(nullptr)
-{
 }

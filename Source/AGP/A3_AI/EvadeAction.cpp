@@ -7,10 +7,8 @@
 
 EStatus UEvadeAction::update()
 {
-	if(HealthCondition && HealthCondition->update() == EStatus::Success)
-	{
-		EnemyCharacter->TickEvade();
-		return EStatus::Running;
-	}
-	return EStatus::Failure;
+	EnemyCharacter->TickEvade();
+	UE_LOG(LogTemp, Error, TEXT("Evade Action is Running"));
+	return EStatus::Running;
 }
+

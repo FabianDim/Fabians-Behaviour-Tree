@@ -10,6 +10,7 @@
 #include "AGP/A3_AI/FabiansParallel.h"
 #include "AGP/A3_AI/FabiansSelector.h"
 #include "AGP/A3_AI/FabiansSequence.h"
+#include "AGP/A3_AI/HealthCondition.h"
 #include "AGP/A3_AI/MoveToPlayerAction.h"
 #include "AGP/A3_AI/PatrolAction.h"
 #include "AGP/A3_AI/PlayerDetectedCondition.h"
@@ -61,12 +62,6 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
 	//Every time I make a new object I always check that it exists.
     // Create the root behavior tree node as UFabiansActiveSelector which will actively select the root of the behaviour tree
     BehaviourTreeRoot = NewObject<UFabiansActiveSelector>(this);
-    UFabiansSelector* RootSelector = Cast<UFabiansSelector>(BehaviourTreeRoot);
-    if (!RootSelector)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to cast BehaviourTreeRoot to UFabiansActiveSelector"));
-        return;
-    }
 
     // Create the Engage Sequence
     UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
@@ -128,13 +123,51 @@ void AEnemyCharacter::BeginPlay() //build the behaviour tree here
 		return;
 	}
 
-	NonEngageSequence->AddChild(PatrolAction);
-	EngageSequence->AddChild(MoveToPlayerAction);
+	UPlayerNotDetectedCondition* PlayerNotDetected = NewObject<UPlayerNotDetectedCondition>(this);
+	if (!PlayerNotDetected)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create PlayerNotDetected"));
+		return;
+	}
+	PlayerNotDetected->EnemyCharacter = this;
+
+	// Assign to PatrolAction
+	PatrolAction->PlayerNotDetectedCondition = PlayerNotDetected;
+
+	UHealthCondition* HealthCondition = NewObject<UHealthCondition>(this);
+	if (!HealthCondition)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create HealthCondition"));
+		return;
+	}
+	EvadeAction->HealthCondition = HealthCondition;
+
+	UFabiansSequence* PatrolSequence = NewObject<UFabiansSequence>(this);
+	if (!PatrolSequence)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create PatrolSequence"));
+		return;
+	}
+	EvadeSequence->AddChild(HealthCondition);
 	EvadeSequence->AddChild(EvadeAction);
-	
-	RootSelector->AddChild(NonEngageSequence);
-    RootSelector->AddChild(EngageSequence);
+
+	EngageSequence->AddChild(PlayerDetected);
+	EngageSequence->AddChild(MoveToPlayerAction);
+
+	PatrolSequence->AddChild(PlayerNotDetectedCondition);
+	PatrolSequence->AddChild(PatrolAction);
+
+	// Add sequences to root selector
+	UFabiansActiveSelector* RootSelector = Cast<UFabiansActiveSelector>(BehaviourTreeRoot);
+	if (!RootSelector)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to cast BehaviourTreeRoot to UFabiansActiveSelector"));
+		return;
+	}
+
 	RootSelector->AddChild(EvadeSequence);
+	RootSelector->AddChild(EngageSequence);
+	RootSelector->AddChild(PatrolSequence);
     
 }
 
@@ -212,13 +245,10 @@ void AEnemyCharacter::OnSensedPawn(APawn* SensedActor)
 void AEnemyCharacter::UpdateSight()
 {
 	if (!SensedCharacter) return;
-	if (PawnSensingComponent)
+	if (PawnSensingComponent && !PawnSensingComponent->HasLineOfSightTo(SensedCharacter))
 	{
-		if (!PawnSensingComponent->HasLineOfSightTo(SensedCharacter))
-		{
-			SensedCharacter = nullptr;
-			//UE_LOG(LogTemp, Display, TEXT("Lost Player"))
-		}
+		SensedCharacter = nullptr; // Clear when line of sight is lost
+		UE_LOG(LogTemp, Display, TEXT("Lost Player"));
 	}
 }
 
