@@ -9,19 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="237dfedc-9084-439f-9227-6d6b70761d80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AGP/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/EvadeAction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/EvadeAction.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/EvadeAction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/EvadeAction.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansActiveSelector.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansComposite.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/FabiansSequence.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/HealthCondition.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/HealthCondition.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/MoveToPlayerAction.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/PatrolAction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/PatrolAction.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/A3_AI/PatrolAction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/A3_AI/PatrolAction.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AGP/Characters/EnemyCharacter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +230,7 @@
       <workItem from="1730018044299" duration="11583000" />
       <workItem from="1730081095669" duration="4076000" />
       <workItem from="1730110079446" duration="8106000" />
-      <workItem from="1730160394099" duration="8856000" />
+      <workItem from="1730160394099" duration="9497000" />
     </task>
     <servers />
   </component>

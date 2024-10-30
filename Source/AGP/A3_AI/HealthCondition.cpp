@@ -9,14 +9,20 @@ UHealthCondition::UHealthCondition()
 
 EStatus UHealthCondition::update()
 {
-	if (EnemyCharacter && EnemyCharacter->HealthComponent)
+	if (!EnemyCharacter)
 	{
-		float CurrentHealthPercentage = EnemyCharacter->HealthComponent->GetCurrentHealthPercentage();
-		if (CurrentHealthPercentage < HealthThreshold)
-		{
-			UE_LOG(LogTemp, Error, TEXT("HealthCondition succeeded: Health is %f%%"), CurrentHealthPercentage);
-			return EStatus::Success;
-		}
+		UE_LOG(LogTemp, Error, TEXT("HealthCondition: EnemyCharacter is null"));
+		return EStatus::Failure;
 	}
-	return EStatus::Failure;
+
+	float CurrentHealth = EnemyCharacter->HealthComponent->GetCurrentHealth(); // Ensure you have a method to get current health
+	if (CurrentHealth <= HealthThreshold)
+	{
+		return EStatus::Success;
+	}
+	else
+	{
+		return EStatus::Failure;
+	}
+
 }

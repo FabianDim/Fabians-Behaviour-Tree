@@ -38,119 +38,125 @@ void AEnemyCharacter::GetTickEngage()
 }
 
 
-void AEnemyCharacter::BeginPlay() //build the behaviour tree here
+void AEnemyCharacter::BeginPlay()
 {
-    Super::BeginPlay();
+	Super::BeginPlay();
 
-    PathfindingSubsystem = GetWorld()->GetSubsystem<UPathfindingSubsystem>();
-    if (!PathfindingSubsystem)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Unable to find the PathfindingSubsystem"));
-        return;
-    }
+	// DO NOTHING IF NOT ON THE SERVER
+	if (GetLocalRole() != ROLE_Authority) return;
 
-    CurrentPath = PathfindingSubsystem->GetRandomPath(GetActorLocation());
-	
-    if (PawnSensingComponent)
-    {
-        PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn); 
-    }
-    else
-    {
-        UE_LOG(LogTemp, Error, TEXT("PawnSensingComponent is null"));
-    }
-	//Every time I make a new object I always check that it exists.
-    // Create the root behavior tree node as UFabiansActiveSelector which will actively select the root of the behaviour tree
-	    BehaviourTreeRoot = NewObject<UFabiansActiveSelector>(this);
-    if (!BehaviourTreeRoot)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create BehaviourTreeRoot as UFabiansActiveSelector"));
-        return;
-    }
-    UFabiansActiveSelector* RootSelector = Cast<UFabiansActiveSelector>(BehaviourTreeRoot);
-    if (!RootSelector)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to cast BehaviourTreeRoot to UFabiansActiveSelector"));
-        return;
-    }
+	PathfindingSubsystem = GetWorld()->GetSubsystem<UPathfindingSubsystem>();
+	if (PathfindingSubsystem)
+	{
+		CurrentPath = PathfindingSubsystem->GetRandomPath(GetActorLocation());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Unable to find the PathfindingSubsystem"))
+	}
+	if (PawnSensingComponent)
+	{
+		PawnSensingComponent->OnSeePawn.AddDynamic(this, &AEnemyCharacter::OnSensedPawn);
+	}
+	BehaviourTreeRoot = NewObject<UFabiansActiveSelector>(this);
+	if (!BehaviourTreeRoot)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create BehaviourTreeRoot as UFabiansActiveSelector"));
+		return;
+	}
 
-    // Create sequences
-    UFabiansSequence* EvadeSequence = NewObject<UFabiansSequence>(this);
-    UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
-    UFabiansSequence* PatrolSequence = NewObject<UFabiansSequence>(this);
+	UFabiansActiveSelector* RootSelector = Cast<UFabiansActiveSelector>(BehaviourTreeRoot);
+	if (!RootSelector)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to cast BehaviourTreeRoot to UFabiansActiveSelector"));
+		return;
+	}
 
-    if (!EvadeSequence || !EngageSequence || !PatrolSequence)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create one of the sequences"));
-        return;
-    }
+	UFabiansSelector* Selector = NewObject<UFabiansSelector>(this);
+	if (!Selector)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed Selector"));
+		return;
+	}
+	// Create sequences
+	UFabiansSequence* EvadeSequence = NewObject<UFabiansSequence>(this);
+	UFabiansSequence* EngageSequence = NewObject<UFabiansSequence>(this);
+	UFabiansSequence* PatrolSequence = NewObject<UFabiansSequence>(this);
 
-    // Create conditions and actions
-    UHealthCondition* HealthCondition = NewObject<UHealthCondition>(this);
-    if (!HealthCondition)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create HealthCondition"));
-        return;
-    }
-    HealthCondition->EnemyCharacter = this;
-	HealthCondition->SetHealthThreshold(40.0f);
-    UEvadeAction* EvadeAction = NewObject<UEvadeAction>(this);
-    if (!EvadeAction)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create EvadeAction"));
-        return;
-    }
-    EvadeAction->EnemyCharacter = this;
+	if (!EvadeSequence || !EngageSequence || !PatrolSequence)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create one of the sequences"));
+		return;
+	}
 
-    UPlayerDetectedCondition* PlayerDetected = NewObject<UPlayerDetectedCondition>(this);
-    if (!PlayerDetected)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create PlayerDetected"));
-        return;
-    }
-    PlayerDetected->EnemyCharacter = this;
+	// Create conditions and actions
+	UHealthCondition* HealthCondition = NewObject<UHealthCondition>(this);
+	if (!HealthCondition)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create HealthCondition"));
+		return;
+	}
+	HealthCondition->EnemyCharacter = this;
+	//HealthCondition->SetHealthThreshold(40.0f);
+	UEvadeAction* EvadeAction = NewObject<UEvadeAction>(this);
+	if (!EvadeAction)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create EvadeAction"));
+		return;
+	}
+	EvadeAction->EnemyCharacter = this;
 
-    UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
-    if (!MoveToPlayerAction)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create MoveToPlayerAction"));
-        return;
-    }
-    MoveToPlayerAction->EnemyCharacter = this;
+	UPlayerDetectedCondition* PlayerDetected = NewObject<UPlayerDetectedCondition>(this);
+	if (!PlayerDetected)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create PlayerDetected"));
+		return;
+	}
+	PlayerDetected->EnemyCharacter = this;
 
-    UPlayerNotDetectedCondition* PlayerNotDetected = NewObject<UPlayerNotDetectedCondition>(this);
-    if (!PlayerNotDetected)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create PlayerNotDetected"));
-        return;
-    }
-    PlayerNotDetected->EnemyCharacter = this;
+	UMoveToPlayerAction* MoveToPlayerAction = NewObject<UMoveToPlayerAction>(this);
+	if (!MoveToPlayerAction)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create MoveToPlayerAction"));
+		return;
+	}
+	MoveToPlayerAction->EnemyCharacter = this;
 
-    UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
-    if (!PatrolAction)
-    {
-        UE_LOG(LogTemp, Error, TEXT("Failed to create PatrolAction"));
-        return;
-    }
-    PatrolAction->EnemyCharacter = this;
+	UPlayerNotDetectedCondition* PlayerNotDetected = NewObject<UPlayerNotDetectedCondition>(this);
+	if (!PlayerNotDetected)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create PlayerNotDetected"));
+		return;
+	}
+	PlayerNotDetected->EnemyCharacter = this;
 
-    // Build sequences
-    EvadeSequence->AddChild(HealthCondition);
-    EvadeSequence->AddChild(EvadeAction);
+	UPatrolAction* PatrolAction = NewObject<UPatrolAction>(this);
+	if (!PatrolAction)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to create PatrolAction"));
+		return;
+	}
+	PatrolAction->EnemyCharacter = this;
 
-    EngageSequence->AddChild(PlayerDetected);
-    EngageSequence->AddChild(MoveToPlayerAction);
+	// Build sequences
+	EvadeSequence->AddChild(HealthCondition);
+	EvadeSequence->AddChild(EvadeAction);
 
-    PatrolSequence->AddChild(PlayerNotDetected);
-    PatrolSequence->AddChild(PatrolAction);
+	EngageSequence->AddChild(PlayerDetected);
+	EngageSequence->AddChild(MoveToPlayerAction);
 
-    // Add sequences to root selector
-    RootSelector->AddChild(EvadeSequence);
-    UE_LOG(LogTemp, Error, TEXT("Adding Evade Sequence"));
-    RootSelector->AddChild(EngageSequence);
-    UE_LOG(LogTemp, Error, TEXT("Adding Engage Sequence"));
-    RootSelector->AddChild(PatrolSequence);
-    UE_LOG(LogTemp, Error, TEXT("Adding Patrol Sequence"));
+	PatrolSequence->AddChild(PlayerNotDetected);
+	PatrolSequence->AddChild(PatrolAction);
+
+
+	Selector->AddChild(EvadeSequence);
+	UE_LOG(LogTemp, Error, TEXT("Adding Evade Sequence"));
+	Selector->AddChild(EngageSequence);
+	UE_LOG(LogTemp, Error, TEXT("Adding Engage Sequence"));
+	Selector->AddChild(PatrolSequence);
+	UE_LOG(LogTemp, Error, TEXT("Adding Patrol Sequence"));
+	// Add sequences to root selector
+	RootSelector->AddChild(Selector);
 }
 
 
